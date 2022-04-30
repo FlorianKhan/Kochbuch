@@ -1,0 +1,75 @@
+openapi: 3.0.0
+info:
+  title: MyAPP
+  description: "__ TODO: Diese Datei durch eine eigene API-Spezifikation ersetzen. __"
+  contact:
+    name: Dennis Schulmeister-Zimolong
+    url: https://www.wpvs.de
+    email: dhbw@windows3.de
+  license:
+    name: CC-BY-4.0
+    url: https://creativecommons.org/licenses/by/4.0/deed.de
+  version: "1.0"
+servers:
+- url: http://localhost:3000
+tags:
+- name: Beispiel
+paths:
+  /:
+    get:
+      tags:
+      - Index
+      summary: Wurzeladresse des Webservices
+      description: Liefert eine HATEOAS-Übersicht aller collections
+      operationId: index
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/HATEOAS_Collection'
+                x-content-type: application/json
+
+components:
+  schemas:
+    HATEOAS_Collection:
+      title: HATEOAS-Links einer Collection
+      type: object
+      properties:
+        _name:
+          type: string
+        query:
+          $ref: '#/components/schemas/HATEOAS_Link'
+        create:
+          $ref: '#/components/schemas/HATEOAS_Link'
+
+    HATEOAS_Resource:
+      title: HATEOAS-Links einer Resource
+      type: object
+      properties:
+        read:
+          $ref: '#/components/schemas/HATEOAS_Link'
+        update:
+          $ref: '#/components/schemas/HATEOAS_Link'
+        patch:
+          $ref: '#/components/schemas/HATEOAS_Link'
+        delete:
+          $ref: '#/components/schemas/HATEOAS_Link'
+
+    HATEOAS_Link:
+      title: HATEOAS-Link
+      type: object
+      properties:
+        url:
+          type: string
+        method:
+          type: string
+        queryParams:
+          type: array
+          items:
+            type: string
+
+  securitySchemes: {}
