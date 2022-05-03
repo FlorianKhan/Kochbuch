@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <!-- TODO: Titel ändern -->
-        <title>Beispiel</title>
+        <title>Mein digitales Kochbuch</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Mit esbuild erzeugte Bundles aus allen JS/CSS-Dateien -->
@@ -13,7 +13,7 @@
         <!-- Dummy-Element für dynamisch nachgeladene CSS-Anweisungen -->
         <style id="page-css"></style>
 
-        <!-- https://pixabay.com/vectors/phone-call-telephone-651704/ -->
+        <!-- https://pixabay.com/vectors/muffin-cupcake-sweet-cake-dessert-297396/ -->
         <link rel="shortcut icon" href="favicon.svg" />
     </head>
     <body>
@@ -22,13 +22,25 @@
             <!-- TODO: Menü anpassen -->
             <ul>
                 <li data-page-name="list">
-                    <a href="#/">Übersicht</a>
+                    <a href="#/">Rezepte</a>
                 </li>
-                <li data-page-name="new">
-                    <a href="#/new/">Beispiel hinzufügen</a>
+                <li data-page-name="rezept" class="non-interactive">
+                    <a>Rezeptdetails</a>
                 </li>
-                <li data-page-name="edit" class="non-interactive">
-                    <a>Beispiel bearbeiten</a>
+                <li data-page-name="editr" class="non-interactive">
+                    <a>Rezept bearbeiten</a>
+                </li>
+                <li data-page-name="newr">
+                    <a href="#/newRezept/">Rezept hinzufügen</a>
+                </li>
+                <li data-page-name="editb" class="non-interactive">
+                    <a>Bewertung bearbeiten</a>
+                </li>
+                <li data-page-name="newb">
+                    <a href="#/newBewertung/">Bewertung hinzufügen</a>
+                </li>
+                <li data-page-name="favorit">
+                    <a href="#/favoriten/">Favoriten</a>
                 </li>
             </ul>
         </nav>

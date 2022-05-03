@@ -8,7 +8,6 @@
  */
 
 /**** TODO: Stylesheet überarbeiten ****/
-/**** Hallo ****/
 
 @import url('https://fonts.googleapis.com/css?family=Rubik');
 
@@ -38,7 +37,7 @@ html {
     }
 
     body {
-        max-width: 40em;
+        max-width: 60em;
         margin: 0 auto;
         margin-top: 2em;
         margin-bottom: 2em;
@@ -55,6 +54,7 @@ nav {
 
     background-color: #404040;
     color: white;
+    text-align: center;
 
     border: 0px solid #202020;
     border-bottom-width: 3px;
@@ -81,6 +81,7 @@ nav ul {
     margin-bottom: -3px;
 
     display: flex;
+    flex-basis: auto;
 }
 
 nav li.active {

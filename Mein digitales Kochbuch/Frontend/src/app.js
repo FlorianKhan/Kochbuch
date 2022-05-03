@@ -19,7 +19,6 @@ class App {
     constructor() {
         // Datenbank-Klasse zur Verwaltung der Datensätze
         this.backend = new Backend();
-        alert("Hallo Welt");
 
         // Single Page Router zur Steuerung der sichtbaren Inhalte
         //// TODO: Routing-Regeln anpassen und ggf. neue Methoden anlegen ////
