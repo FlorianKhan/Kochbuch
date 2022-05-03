@@ -57,6 +57,8 @@ export default class PageList extends Page {
             html = html.replace("$REZEPT_NAME$", dataset.rezeptname);
             html = html.replace("$DAUER$", dataset.dauer);
             html = html.replace("$GRAD$", dataset.schwierigkeitsgrad);
+            html = html.replace("$GRAD$", dataset.zutaten);
+            html = html.replace("$GRAD$", dataset.zubereitung);
 
             // Element in die Liste einfügen
             let dummyElement = document.createElement("div");
@@ -66,8 +68,8 @@ export default class PageList extends Page {
             olElement.appendChild(liElement);
 
             // Event Handler registrieren
-            liElement.querySelector(".action.details").addEventListener("click", () => location.hash = `#/rezept/${dataset._id}`);
-            //liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
+            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit/${dataset._id}`);
+            liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
         }
     }
 
@@ -79,12 +81,12 @@ export default class PageList extends Page {
      */
     async _askDelete(id) {
         // Sicherheitsfrage zeigen
-        let answer = confirm("Soll der ausgewählte Rezept wirklich gelöscht werden?");
+        let answer = confirm("Soll das ausgewählte Rezept wirklich gelöscht werden?");
         if (!answer) return;
 
         // Datensatz löschen
         try {
-            this._app.backend.fetch("DELETE", `/start/${id}`);
+            this._app.backend.fetch("DELETE", `/rezept/${id}`);
         } catch (ex) {
             this._app.showException(ex);
             return;
