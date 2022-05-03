@@ -34,7 +34,7 @@ export default class PageList extends Page {
         this._title = "Übersicht";
 
         // Platzhalter anzeigen, wenn noch keine Daten vorhanden sind
-        let data = await this._app.backend.fetch("GET", "/start");
+        let data = await this._app.backend.fetch("GET", "/index");
         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
         if (data.length) {
@@ -57,8 +57,8 @@ export default class PageList extends Page {
             html = html.replace("$REZEPT_NAME$", dataset.rezeptname);
             html = html.replace("$DAUER$", dataset.dauer);
             html = html.replace("$GRAD$", dataset.schwierigkeitsgrad);
-            html = html.replace("$GRAD$", dataset.zutaten);
-            html = html.replace("$GRAD$", dataset.zubereitung);
+            html = html.replace("$ZUTATEN$", dataset.zutaten);
+            html = html.replace("$ZUBEREITUNG$", dataset.zubereitung);
 
             // Element in die Liste einfügen
             let dummyElement = document.createElement("div");
@@ -70,6 +70,8 @@ export default class PageList extends Page {
             // Event Handler registrieren
             liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit/${dataset._id}`);
             liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
+            // Favorit Handler
+            // Bewertung Handler
         }
     }
 
@@ -101,4 +103,7 @@ export default class PageList extends Page {
             this._emptyMessageElement.classList.remove("hidden");
         }
     }
+
+        //Favorit-Methoden
+        //Bewertung-Methode
 };
