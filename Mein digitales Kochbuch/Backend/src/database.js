@@ -33,21 +33,19 @@ class DatabaseFactory {
     async _createDemoData() {
         //// TODO: Methode anpassen, um zur eigenen App passende Demodaten anzulegen ////
         //// oder die Methode ggf. einfach löschen und ihren Aufruf oben entfernen.  ////
-        let examples = this.database.collection("example");
+        let examples = this.database.collection("rezepte");
 
         if (await examples.estimatedDocumentCount() === 0) {
             examples.insertMany([
                 {
-                    title: "Cloud Native Architecture and Design",
-                    author: "Shivakumar R Goniwada",
-                    publisher: "Apress",
-                    year: 2022,
+                    rezeptname: "Erdbeerkuchen",
+                    dauer: "50min",
+                    grad: "3",
                 },
                 {
-                    title: "Machine Learning Kompakt",
-                    author: "Andriy Burkov",
-                    publisher: "mitp",
-                    year: 2019,
+                    rezeptname: "Apfelkuchen",
+                    dauer: "80min",
+                    grad: "7",
                 },
             ]);
         }
