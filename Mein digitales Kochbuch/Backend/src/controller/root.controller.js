@@ -33,13 +33,16 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
       * so dass Clients die URL-Struktur des Webservices entdecken können).
       */
      async index(req, res, next) {
+         console.log("Hallo");
          //// TODO: Example-Collection hier durch eigene Collections ersetzen ////
+         // wenn mit send funktioniert, aber mit sendResult nicht: OpenAPI prüfen!
          res.sendResult([
              // {
              //     _name: "example",
              //     query: {url: "/example", method: "GET", queryParams: ["search"]},
              //     create: {url: "/example", method: "POST"},
              // }
+             "Hallo Welt"
          ]);
 
          next();
