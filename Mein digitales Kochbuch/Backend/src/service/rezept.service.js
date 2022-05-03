@@ -13,7 +13,7 @@ export default class RezeptService {
      * Konstruktor.
      */
     constructor() {
-        this._addresses = DatabaseFactory.database.collection("rezepte");
+        this._rezepte = DatabaseFactory.database.collection("rezepte");
     }
 
     /**
@@ -45,9 +45,11 @@ export default class RezeptService {
         rezept = rezept || {};
 
         let newRezept = {
-            rezeptname: address.first_name || "",
-            dauer:  address.last_name  || "",
-            grad:      address.phone      || "",
+            rezeptname:               address.rezeptname         || "",
+            dauer:                    address.dauer              || "",
+            schwierigkeitsgrad:       address.schwierigkeitsgrad || "",
+            zutaten:                  address.zutaten            || "",
+            zubereitung:              address.zubereitung        || ""
         };
 
         let result = await this._rezepte.insertOne(newRezept);
@@ -81,9 +83,11 @@ export default class RezeptService {
             $set: {},
         }
 
-        if (rezept.rezeptname) updateDoc.$set.rezeptname = rezept.rezeptname;
-        if (rezept.dauer)      updateDoc.$set.dauer      = rezept.dauer;
-        if (rezept.grad)       updateDoc.$set.grad       = rezept.grad;
+        if (rezept.rezeptname)         updateDoc.$set.rezeptname         = rezept.rezeptname;
+        if (rezept.dauer)              updateDoc.$set.dauer              = rezept.dauer;
+        if (rezept.schwierigkeitsgrad) updateDoc.$set.schwierigkeitsgrad = rezept.schwierigkeitsgrad;
+        if (rezept.zutaten)            updateDoc.$set.zutaten            = rezept.zutaten;
+        if (rezept.zubereitung)        updateDoc.$set.zubereitung        = rezept.zubereitung;
 
         await this._rezepte.updateOne({_id: new ObjectId(id)}, updateDoc);
         return this._rezepte.findOne({_id: new ObjectId(id)});

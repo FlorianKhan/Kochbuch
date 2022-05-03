@@ -33,19 +33,24 @@ class DatabaseFactory {
     async _createDemoData() {
         //// TODO: Methode anpassen, um zur eigenen App passende Demodaten anzulegen ////
         //// oder die Methode ggf. einfach löschen und ihren Aufruf oben entfernen.  ////
-        let examples = this.database.collection("rezepte");
+        let rezepte = this.database.collection("rezepte");
 
-        if (await examples.estimatedDocumentCount() === 0) {
-            examples.insertMany([
+        if (await rezepte.estimatedDocumentCount() === 0) {
+            rezepte.insertMany([
                 {
                     rezeptname: "Erdbeerkuchen",
                     dauer: "50min",
-                    grad: "3",
+                    schwierigkeitsgrad: "3",
+                    zutaten: " - 200g Mehl \n - 400g Erdeeren \n - 700l Milch \n 20g Zucker",
+                    zubereitung:"Mehl mit Milch und Zucker verühren. Backen auf 500 Grad."
                 },
                 {
                     rezeptname: "Apfelkuchen",
                     dauer: "80min",
-                    grad: "7",
+                    schwierigkeitsgrad: "7",
+                    zutaten: " - 200g Mehl \n - 400g Erdeeren \n - 700l Milch \n 20g Zucker",
+                    zubereitung:"Mehl mit Milch und Zucker verühren. Backen auf 500 Grad."
+
                 },
             ]);
         }
