@@ -1,8 +1,8 @@
 {
-    "name": "adressbuch-frontent",
+    "name": "kochbuch-frontend",
     "version": "1.0.0",
-    "description": "Adressbuch: Frontend",
-    "author": "Dennis Schulmeister-Zimolong",
+    "description": "Mein digitales Kochbuch: Frontend",
+    "author": "Angelika Kleimann, Florian Khan, Marco Pelzer, Rebecca Piotrowski",
     "license": "CC-BY-4.0",
     "type": "module",
     "scripts": {

@@ -1,14 +1,8 @@
 {
-  "__TODO__": [
-      "Feld 'name' anpassen mit dem richtigen Namen des Services",
-      "Feld 'descriptn' anpassen mit einer Minibeschreibung des Services",
-      "Feld 'author' anpassen mit den richtigen Autoren des Services",
-      "Den Abschnitt __TODO__ hier wieder löschen. :-)"
-  ],
-  "name": "myapp-backend",
+  "name": "kochbuch-backend",
   "version": "1.0.0",
-  "description": "Meine App: Backend",
-  "author": "Erika Musterfrau",
+  "description": "Mein digitales Kochbuch: Backend",
+  "author": "Angelika Kleimann, Florian Khan, Marco Pelzer, Rebecca Piotrowski",
   "license": "CC-BY-4.0",
   "main": "src/index.js",
   "type": "module",

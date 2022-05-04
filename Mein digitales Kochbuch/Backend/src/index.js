@@ -7,6 +7,7 @@ import OpenApiEnforcerMiddleware from "@dschulmeis/restify-openapi-enforcer-midd
 //// TODO: Weitere Controller-Klassen importieren ////
 import DatabaseFactory from "./database.js";
 import RootController from "./controller/root.controller.js";
+import RezeptController from "./controller/rezept.controller.js";
 
 // Verzeichnisnamen der Quellcodedatei ermitteln
 import path from "path";
@@ -92,13 +93,14 @@ server.use(OpenApiEnforcerMiddleware(openApiEnforcer));
 // HTTP-Controller registrieren
 //// TODO: Weitere Controller-Klassen hinufügen ////
 new RootController(server, "/");
+new RezeptController(server, "/rezept");
 
 // Server tatsächlich starten
 server.listen(config.port, config.host, function() {
     //// TODO: Konsolenausgabe anpassen (Name des Services usw.) ////
     console.log();
     console.log("=============");
-    console.log("MyApp-Server");
+    console.log("Kochbuch-Server");
     console.log("=============");
     console.log();
     console.log("Ausführung mit folgender Konfiguration:");

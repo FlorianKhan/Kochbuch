@@ -34,7 +34,7 @@ export default class PageList extends Page {
         this._title = "Übersicht";
 
         // Platzhalter anzeigen, wenn noch keine Daten vorhanden sind
-        let data = await this._app.backend.fetch("GET", "/index");
+        let data = await this._app.backend.fetch("GET", "/rezept");
         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
         if (data.length) {
@@ -54,7 +54,7 @@ export default class PageList extends Page {
             let html = templateHtml;
 
             html = html.replace("$ID$", dataset._id);
-            html = html.replace("$REZEPT_NAME$", dataset.rezeptname);
+            html = html.replace("$REZEPTNAME$", dataset.rezeptname);
             html = html.replace("$DAUER$", dataset.dauer);
             html = html.replace("$GRAD$", dataset.schwierigkeitsgrad);
             html = html.replace("$ZUTATEN$", dataset.zutaten);
@@ -72,6 +72,7 @@ export default class PageList extends Page {
             liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
             // Favorit Handler
             // Bewertung Handler
+            // Einkaufsliste Handler
         }
     }
 
@@ -106,4 +107,5 @@ export default class PageList extends Page {
 
         //Favorit-Methoden
         //Bewertung-Methode
+        // Einkaufsliste-Methode
 };
