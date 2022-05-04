@@ -26,6 +26,12 @@
     main .rezept {
         font-size: 150%;
     }
+    main .rezeptname {
+        font-size: 150%;
+    }
+     h1 {
+        font-size: 100%;
+     }
 
     /* Aktionsbuttons */
     main .actions {
@@ -63,7 +69,7 @@
         <!-- Platzhalter für eine leere Liste -->
         <li class="empty-placeholder">
             <div class="rezept">
-                Keine Rezepte vorhanden
+                Kein Rezept vorhanden
             </div>
         </li>
 
@@ -78,6 +84,14 @@
             <div class="schwierigskeitsgrad">
                 $GRAD$
             </div>
+            <h1>Zutaten:</h1>
+            <div class="zutaten">
+                $ZUTATEN$
+            </div>
+            <h1>Zubereitung:</h1>
+            <div class="zubereitung">
+                $ZUBEREITUNG$
+            </div>
             <div class="actions">
                 <div class="action edit">
                     <a>🖊️</a>
@@ -91,12 +105,6 @@
                 <div class="action bewertung">
                     <a>Zur Bewertung</a>
                 </div>
-            </div>
-            <div class="zutaten">
-                $ZUTATEN$
-            </div>
-            <div class="zubereitung">
-                $ZUBEREITUNG$
             </div>
         </li>
     </ol>

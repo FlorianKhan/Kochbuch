@@ -21,6 +21,7 @@ html {
     font-family: "Rubik", sans-serif;
     font-size: 10pt;
     line-height: 1.6;
+    background: rgb(242, 242, 242);
 }
 
 .hidden {

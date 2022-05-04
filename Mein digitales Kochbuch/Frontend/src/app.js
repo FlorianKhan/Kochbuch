@@ -26,7 +26,7 @@ class App {
                 url: "^/$",
                 show: () => this._gotoList()
             },{
-                url: "^/new/$",
+                url: "^/newRezept/$",
                 show: () => this._gotoNew()
             },{
                 url: "^/edit/(.*)$",

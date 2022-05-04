@@ -22,7 +22,7 @@ class DatabaseFactory {
         await this.client.connect();
         this.database = this.client.db("kochbuch");
 
-        await this._createDemoData();
+        //await this._createDemoData();
     }
 
     /**
@@ -41,7 +41,7 @@ class DatabaseFactory {
                     rezeptname: "Erdbeerkuchen",
                     dauer: "50min",
                     schwierigkeitsgrad: "3",
-                    zutaten: " - 200g Mehl \n - 400g Erdeeren \n - 700l Milch \n 20g Zucker",
+                    zutaten: "<p> - 200g Mehl <br /> \ - 400g Erdeeren <br /> \ - 700l Milch <br /> \ -20g Zucker</p>",
                     zubereitung:"Mehl mit Milch und Zucker verühren. Backen auf 500 Grad."
                 },
                 {

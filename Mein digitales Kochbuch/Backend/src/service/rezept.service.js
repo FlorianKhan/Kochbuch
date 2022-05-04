@@ -45,11 +45,11 @@ export default class RezeptService {
         rezept = rezept || {};
 
         let newRezept = {
-            rezeptname:               address.rezeptname         || "",
-            dauer:                    address.dauer              || "",
-            schwierigkeitsgrad:       address.schwierigkeitsgrad || "",
-            zutaten:                  address.zutaten            || "",
-            zubereitung:              address.zubereitung        || ""
+            rezeptname:               rezept.rezeptname         || "",
+            dauer:                    rezept.dauer              || "",
+            schwierigkeitsgrad:       rezept.schwierigkeitsgrad || "",
+            zutaten:                  rezept.zutaten            || "",
+            zubereitung:              rezept.zubereitung        || ""
         };
 
         let result = await this._rezepte.insertOne(newRezept);
