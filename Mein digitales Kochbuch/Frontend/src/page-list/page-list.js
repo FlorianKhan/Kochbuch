@@ -56,7 +56,7 @@ export default class PageList extends Page {
             html = html.replace("$ID$", dataset._id);
             html = html.replace("$REZEPTNAME$", dataset.rezeptname);
             html = html.replace("$DAUER$", "Zubereitungsdauer: " + dataset.dauer);
-            html = html.replace("$GRAD$", "Schwierigkeitsgrad: " + dataset.schwierigkeitsgrad);
+            html = html.replace("$SCHWIERIGKEITSGRAD$", "Schwierigkeitsgrad: " + dataset.schwierigkeitsgrad);
             html = html.replace("$ZUTATEN$", dataset.zutaten);
             html = html.replace("$ZUBEREITUNG$", dataset.zubereitung);
 
@@ -106,7 +106,7 @@ export default class PageList extends Page {
             this._emptyMessageElement.classList.remove("hidden");
         }
     }
-        //Bewertung-Methode
-        //Favorit-Methoden
-        //Einkaufsliste-Methode
+        //Favorit-Methoden (Kopie ausprogrammieren)
+
+        //Einkaufsliste-Methode (Kopie ausprogrammieren)
 };
