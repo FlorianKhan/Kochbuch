@@ -41,15 +41,15 @@ class DatabaseFactory {
                     rezeptname: "Erdbeerkuchen",
                     dauer: "50min",
                     schwierigkeitsgrad: "3",
-                    zutaten: "<p> - 200g Mehl <br /> \ - 400g Erdeeren <br /> \ - 700l Milch <br /> \ -20g Zucker</p>",
+                    zutaten: "<p> - 200g Mehl <br /> \ - 400g Erdeeren <br /> \ - 700l Milch <br /> \ - 20g Zucker</p>",
                     zubereitung:"Mehl mit Milch und Zucker verühren. Backen auf 500 Grad."
                 },
                 {
                     rezeptname: "Apfelkuchen",
                     dauer: "80min",
                     schwierigkeitsgrad: "7",
-                    zutaten: " - 200g Mehl \n - 400g Erdeeren \n - 700l Milch \n 20g Zucker",
-                    zubereitung:"Mehl mit Milch und Zucker verühren. Backen auf 500 Grad."
+                    zutaten: "<p> - 250g Mehl <br /> \ - 1000g Äpfel <br /> \ - 400l Milch <br /> \ - 150g Zucker</p>",
+                    zubereitung:"Mehl mit Milch und Zucker verühren. Und so weiter. Test."
 
                 },
             ]);
