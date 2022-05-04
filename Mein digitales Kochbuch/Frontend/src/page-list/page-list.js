@@ -70,9 +70,11 @@ export default class PageList extends Page {
             // Event Handler registrieren
             liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit/${dataset._id}`);
             liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
-            // Favorit Handler
-            // Bewertung Handler
-            // Einkaufsliste Handler
+            // Bewertung Handler (beim Klick auf diesen Button muss auf die Seite Bewertungen gewechselt wwerden)
+            // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Favoritenliste
+            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalt Favoritenliste möglich machen)
+            // Einkaufsliste Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Einkaufsliste
+            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalt Einkaufsliste möglich machen)
         }
     }
 
@@ -104,8 +106,7 @@ export default class PageList extends Page {
             this._emptyMessageElement.classList.remove("hidden");
         }
     }
-
-        //Favorit-Methoden
         //Bewertung-Methode
-        // Einkaufsliste-Methode
+        //Favorit-Methoden
+        //Einkaufsliste-Methode
 };
