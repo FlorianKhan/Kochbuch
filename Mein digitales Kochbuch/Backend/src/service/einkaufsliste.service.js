@@ -41,12 +41,12 @@ export default class EinkaufslisteService {
      * @param {Object} rezept Zu speichernde Adressdaten
      * @return {Promise} Gespeicherte Adressdaten
      */
-    async create(einkauf) {
-        einkauf = einkauf || {};
+    async create(rezeptID) {
+        einkauf = rezeptID || {};
+        console.log(rezeptID);
 
         let newEinkauf = {
-            rezeptname:               rezept.rezeptname         || "",
-            zutaten:                  rezept.zutaten            || ""
+            rezeptname:               rezept.rezeptname         || ""
         };
 
         let result = await this._einkäufe.insertOne(newEinkauf);

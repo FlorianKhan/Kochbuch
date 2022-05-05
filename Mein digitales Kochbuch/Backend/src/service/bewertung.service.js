@@ -28,7 +28,7 @@ export default class BewertungService {
     async search(query) {
         let cursor = this._bewertungen.find(query, {
             sort: {
-                bewertungstitel: 1,
+                rezeptname: 1,
             }
         });
 
@@ -45,9 +45,10 @@ export default class BewertungService {
         bewertung = bewertung || {};
 
         let newBewertung = {
-            bewertungstitel:               bewertung.bewertungstitel         || "",
-            bepunktung:                    bewertung.bepunktung              || "",
-            bewertungstext:                bewertung.bewertungstext         || ""
+            rezeptname:               bewertung.rezeptname         || "",
+            bewertungstitel:          bewertung.bewertungstitel         || "",
+            bepunktung:               bewertung.bepunktung              || "",
+            bewertungstext:           bewertung.bewertungstext         || ""
         };
 
         let result = await this._bewertungen.insertOne(newBewertung);
@@ -81,6 +82,7 @@ export default class BewertungService {
             $set: {},
         }
 
+        if (bewertung.rezeptname)              updateDoc.$set.rezeptname              = bewertung.rezeptname;
         if (bewertung.bewertungstitel)         updateDoc.$set.bewertungstitel         = bewertung.bewertungstitel;
         if (bewertung.bepunktung)              updateDoc.$set.bepunktung              = bewertung.bepunktung;
         if (bewertung.bewertungstext)          updateDoc.$set.bewertungstext          = bewertung.bewertungstext;

@@ -45,7 +45,7 @@ export default class FavoritenService {
         favorit = favorit || {};
 
         let newFavorit = {
-            rezeptname:               rezept.rezeptname         || ""
+            rezeptname:               favorit.rezeptname         || ""
         };
 
         let result = await this._favoriten.insertOne(newFavorit);

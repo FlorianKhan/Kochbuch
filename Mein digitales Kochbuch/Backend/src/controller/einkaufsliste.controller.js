@@ -62,7 +62,7 @@ export default class EinkaufslisteController {
      * Neue Adresse anlegen
      */
     async create(req, res, next) {
-        let result = await this._service.create(req.body);
+        let result = await this._service.create(req.query);
         this._insertHateoasLinks(result);
 
         res.status(201);
