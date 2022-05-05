@@ -41,8 +41,8 @@ class App {
                 url: "^/newBewertung/$",
                 show: () => this._gotoNewB()
             },{
-                url: "^/favorit/$",
-                show: () => this._gotoFavorit()
+                url: "^/favoriten/$",
+                show: () => this._gotoFavoriten()
             },{
                 url: "^/einkaufsliste/$",
                 show: () => this._gotoEinkaufsliste()
@@ -164,7 +164,7 @@ class App {
             this.showException(ex);
         }
     }
-    async _gotoFavorit() {
+    async _gotoFavoriten() {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
             let {default: PageFavoriten} = await import("./page-favoriten/page-favoriten.js");

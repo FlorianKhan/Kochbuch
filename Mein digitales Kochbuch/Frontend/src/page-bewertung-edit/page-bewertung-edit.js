@@ -116,6 +116,6 @@ export default class PageBewertungEdit extends Page {
         }
 
         // Zurück zur Übersicht
-        location.hash = "#/";
+        location.hash = "#/bewertung";
     }
 };

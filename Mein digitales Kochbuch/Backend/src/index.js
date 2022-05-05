@@ -98,7 +98,7 @@ server.use(OpenApiEnforcerMiddleware(openApiEnforcer));
 new RootController(server, "/");
 new RezeptController(server, "/rezept");
 new BewertungController(server, "/bewertung");
-new FavoritenController(server, "/favorit");
+new FavoritenController(server, "/favoriten");
 new EinkaufslisteController(server, "/einkaufsliste");
 
 // Server tatsächlich starten

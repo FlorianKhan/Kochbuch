@@ -63,6 +63,7 @@ export default class PageBewertung extends Page {
 
             //Daten
             html = html.replace("$ID$", dataset._id); //meine eigene ID
+            html = html.replace("$REZEPTNAME$", dataset.rezeptname);
             html = html.replace("$BEWERTUNGSTITEL$", dataset.bewertungstitel);
             html = html.replace("$BEPUNKTUNG$", "Bepunktung: " + dataset.bepunktung);
             html = html.replace("$BEWERTUNGSTEXT$", dataset.bewertungstext);
