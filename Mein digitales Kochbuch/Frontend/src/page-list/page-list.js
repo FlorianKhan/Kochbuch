@@ -4,7 +4,7 @@ import Page from "../page.js";
 import HtmlTemplate from "./page-list.html";
 
 /**
- * Klasse PageList: Stellt die Listenübersicht zur Verfügung
+ * Klasse PageList: Stellt die Listenübersicht der Rezepte zur Verfügung
  */
 export default class PageList extends Page {
     /**
@@ -76,18 +76,18 @@ export default class PageList extends Page {
             liElement.querySelector(".action.bewerten").addEventListener("click", () => location.hash = `#/newBewertung/`);
 
             // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Favoritenliste
-            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalt Favoritenliste möglich machen)
+            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalb Favoritenliste möglich machen)
             liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset._id));
 
             // Einkaufsliste Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Einkaufsliste
-            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalt Einkaufsliste möglich machen)
+            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalb Einkaufsliste möglich machen)
             liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset._id));
         }
     }
 
     /**
-     * Löschen der übergebenen Adresse. Zeigt einen Popup, ob der Anwender
-     * die Adresse löschen will und löscht diese dann.
+     * Löschen der übergebenen Rezepte. Zeigt einen Popup, ob der Anwender
+     * das Rezept löschen will und löscht dieses dann.
      *
      * @param {Integer} id ID des zu löschenden Datensatzes
      */
