@@ -7,8 +7,6 @@
  * stattdessen in das jeweilige Stylesheet.
  */
 
-/**** TODO: Stylesheet überarbeiten ****/
-
 @import url('https://fonts.googleapis.com/css?family=Rubik');
 
 /* ALLGEMEINES */
@@ -30,7 +28,6 @@ html {
 
 @media (min-width: 40em) {
     html {
-        /* http://bg.siteorigin.com/ */
         background-color: #669ac4;
         background-image: url(img/background.png);
 

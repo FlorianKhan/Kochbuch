@@ -4,7 +4,7 @@
   import HtmlTemplate from "./page-favoriten.html";
 
   /**
-   * Klasse PageList: Stellt die Listenübersicht zur Verfügung
+   * Klasse PageFavoriten: Stellt die Übersicht der Favoriten dar
    */
   export default class PageFavoriten extends Page {
       /**

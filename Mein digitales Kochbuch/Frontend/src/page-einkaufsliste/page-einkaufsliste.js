@@ -4,7 +4,7 @@
  import HtmlTemplate from "./page-einkaufsliste.html";
 
  /**
-  * Klasse PageList: Stellt die Listenübersicht zur Verfügung
+  * Klasse PageEinkaufsliste: Stellt die Übersicht der Einkaufsliste dar
   */
  export default class PageEinkaufsliste extends Page {
      /**
