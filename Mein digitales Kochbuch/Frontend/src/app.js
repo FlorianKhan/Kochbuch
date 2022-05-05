@@ -93,7 +93,7 @@ class App {
     }
 
     /**
-     * Seite zum Anlegen einer neuen Adresse anzeigen.  Wird vom Single Page
+     * Seite zum Anlegen eines neuen Rezeptes anzeigen.  Wird vom Single Page
      * Router aufgerufen.
      */
     async _gotoNewR() {
@@ -110,10 +110,10 @@ class App {
     }
 
     /**
-     * Seite zum Bearbeiten einer Adresse anzeigen.  Wird vom Single Page
+     * Seite zum Bearbeiten eines Rezeptes anzeigen.  Wird vom Single Page
      * Router aufgerufen.
      *
-     * @param {Number} id ID der zu bearbeitenden Adresse
+     * @param {Number} id ID des zu bearbeitenden Rezeptes
      */
     async _gotoEditR(id) {
         try {
