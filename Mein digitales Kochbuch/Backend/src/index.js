@@ -8,6 +8,9 @@ import OpenApiEnforcerMiddleware from "@dschulmeis/restify-openapi-enforcer-midd
 import DatabaseFactory from "./database.js";
 import RootController from "./controller/root.controller.js";
 import RezeptController from "./controller/rezept.controller.js";
+import BewertungController from "./controller/bewertung.controller.js";
+import FavoritenController from "./controller/favoriten.controller.js";
+import EinkaufslisteController from "./controller/einkaufsliste.controller.js";
 
 // Verzeichnisnamen der Quellcodedatei ermitteln
 import path from "path";
@@ -94,6 +97,9 @@ server.use(OpenApiEnforcerMiddleware(openApiEnforcer));
 //// TODO: Weitere Controller-Klassen hinufügen ////
 new RootController(server, "/");
 new RezeptController(server, "/rezept");
+new BewertungController(server, "/bewertung");
+new FavoritenController(server, "/favorit");
+new EinkaufslisteController(server, "/einkaufsliste");
 
 // Server tatsächlich starten
 server.listen(config.port, config.host, function() {

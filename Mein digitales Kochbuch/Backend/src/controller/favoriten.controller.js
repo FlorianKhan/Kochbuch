@@ -1,6 +1,6 @@
 "use strict"
 
-import RezeptService from "../service/favoriten.service.js";
+import FavoritenService from "../service/favoriten.service.js";
 import {wrapHandler} from "../utils.js";
 import RestifyError from "restify-errors";
 

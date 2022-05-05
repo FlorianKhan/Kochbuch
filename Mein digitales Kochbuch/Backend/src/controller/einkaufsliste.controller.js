@@ -1,6 +1,6 @@
 "use strict"
 
-import RezeptService from "../service/einkaufsliste.service.js";
+import EinkaufslisteService from "../service/einkaufsliste.service.js";
 import {wrapHandler} from "../utils.js";
 import RestifyError from "restify-errors";
 
