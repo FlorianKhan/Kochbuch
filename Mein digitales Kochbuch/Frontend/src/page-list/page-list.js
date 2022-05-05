@@ -68,13 +68,20 @@ export default class PageList extends Page {
             olElement.appendChild(liElement);
 
             // Event Handler registrieren
-            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/edit/${dataset._id}`);
+            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/editRezept/${dataset._id}`);
             liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
+
             // Bewertung Handler (beim Klick auf diesen Button muss auf die Seite Bewertungen gewechselt wwerden)
+            //liElement.querySelector(".action.bewertung").addEventListener("click", () => location.hash = `#/bewertungen`);
+            //liElement.querySelector(".action.bewerten").addEventListener("click", () => location.hash = `#/newBewertung/${PageBewertung.dataset._id}`);
+
             // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Favoritenliste
             // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalt Favoritenliste möglich machen)
+            //liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset._id));
+
             // Einkaufsliste Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Einkaufsliste
             // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalt Einkaufsliste möglich machen)
+            //liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset._id));
         }
     }
 
@@ -107,6 +114,15 @@ export default class PageList extends Page {
         }
     }
         //Favorit-Methoden (Kopie ausprogrammieren)
+
+    //async _hinzufügenFavorit(id) {
+    //    try {
+    //        this._app.backend.fetch("ADD", `/favoriten`);
+    //    } catch (ex) {
+    //        this._app.showException(ex);
+    //        return;
+    //    }
+    //}
 
         //Einkaufsliste-Methode (Kopie ausprogrammieren)
 };
