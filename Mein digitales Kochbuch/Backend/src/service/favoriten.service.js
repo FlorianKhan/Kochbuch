@@ -4,9 +4,9 @@ import DatabaseFactory from "../database.js";
 import {ObjectId} from "mongodb";
 
 /**
- * Geschäftslogik zur Verwaltung von Adressen. Diese Klasse implementiert die
+ * Geschäftslogik zur Verwaltung der Favoriten. Diese Klasse implementiert die
  * eigentliche Anwendungslogik losgelöst vom technischen Übertragungsweg.
- * Die Adressen werden der Einfachheit halber in einer MongoDB abgelegt.
+ * Die Favoriten werden der Einfachheit halber in einer MongoDB abgelegt.
  */
 export default class FavoritenService {
     /**
@@ -17,7 +17,7 @@ export default class FavoritenService {
     }
 
     /**
-     * Adressen suchen. Unterstützt wird lediglich eine ganz einfache Suche,
+     * Favoriten suchen. Unterstützt wird lediglich eine ganz einfache Suche,
      * bei der einzelne Felder auf exakte Übereinstimmung geprüft werden.
      * Zwar unterstützt MongoDB prinzipiell beliebig komplexe Suchanfragen.
      * Um das Beispiel klein zu halten, wird dies hier aber nicht unterstützt.
@@ -36,10 +36,10 @@ export default class FavoritenService {
     }
 
     /**
-     * Speichern einer neuen Adresse.
+     * Speichern eines neuen Favoriten.
      *
-     * @param {Object} rezept Zu speichernde Adressdaten
-     * @return {Promise} Gespeicherte Adressdaten
+     * @param {Object} rezept Zu speichernder Favorit
+     * @return {Promise} Gespeicherte Favoriten
      */
     async create(favorit) {
         favorit = favorit || {};
@@ -53,10 +53,10 @@ export default class FavoritenService {
     }
 
     /**
-     * Auslesen einer vorhandenen Adresse anhand ihrer ID.
+     * Auslesen eines vorhandenen Favoriten anhand seiner ID.
      *
-     * @param {String} id ID der gesuchten Adresse
-     * @return {Promise} Gefundene Adressdaten
+     * @param {String} id ID des gesuchten Favoriten
+     * @return {Promise} Gefundener Favorit
      */
     async read(id) {
         let result = await this._favoriten.findOne({_id: new ObjectId(id)});
@@ -65,9 +65,9 @@ export default class FavoritenService {
 
 
     /**
-     * Löschen einer Adresse anhand ihrer ID.
+     * Löschen eines Favoriten anhand seiner ID.
      *
-     * @param {String} id ID der gesuchten Adresse
+     * @param {String} id ID des gesuchten Favorits
      * @return {Promise} Anzahl der gelöschten Datensätze
      */
     async delete(id) {
