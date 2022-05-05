@@ -23,7 +23,7 @@ export default class FavoritenService {
      * Um das Beispiel klein zu halten, wird dies hier aber nicht unterstützt.
      *
      * @param {Object} query Optionale Suchparameter
-     * @return {Promise} Liste der gefundenen Adressen
+     * @return {Promise} Liste der gefundenen Favoriten
      */
     async search(query) {
         let cursor = this._favoriten.find(query, {
