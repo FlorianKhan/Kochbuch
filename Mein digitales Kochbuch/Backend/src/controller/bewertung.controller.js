@@ -5,9 +5,9 @@ import {wrapHandler} from "../utils.js";
 import RestifyError from "restify-errors";
 
 /**
- * HTTP-Controller-Klasse für Adressbucheinträge. Diese Klasse registriert
+ * HTTP-Controller-Klasse für Bewertungseinträge. Diese Klasse registriert
  * alle notwendigen URL-Handler beim Webserver für einen einfachen REST-
- * Webservice zum Lesen und Schreiben von Adressen.
+ * Webservice zum Lesen und Schreiben von Bewertungen.
  */
 export default class BewertungController {
     /**
@@ -20,11 +20,11 @@ export default class BewertungController {
         this._service = new BewertungService();
         this._prefix = prefix;
 
-        // Collection: Adressen
+        // Collection: Bewertungen
         server.get(prefix, wrapHandler(this, this.search));
         server.post(prefix, wrapHandler(this, this.create));
 
-        // Entity: Adresse
+        // Entity: Bewertung
         server.get(prefix + "/:id", wrapHandler(this, this.read));
         server.put(prefix + "/:id", wrapHandler(this, this.update));
         server.patch(prefix + "/:id", wrapHandler(this, this.update));
@@ -51,8 +51,8 @@ export default class BewertungController {
     }
 
     /**
-     * GET /address
-     * Adressen suchen
+     * GET /bewertung
+     * Bewertung suchen
      */
     async search(req, res, next) {
         let result = await this._service.search(req.query);
@@ -62,8 +62,8 @@ export default class BewertungController {
     }
 
     /**
-     * POST /address
-     * Neue Adresse anlegen
+     * POST /bewertung
+     * Neue Bewertung anlegen
      */
     async create(req, res, next) {
         let result = await this._service.create(req.body);
@@ -77,8 +77,8 @@ export default class BewertungController {
     }
 
     /**
-     * GET /address/:id
-     * Adresse auslesen
+     * GET /bewertung/:id
+     * Bewertung auslesen
      */
     async read(req, res, next) {
         let result = await this._service.read(req.params.id);
@@ -94,9 +94,9 @@ export default class BewertungController {
     }
 
     /**
-     * PUT /address/:id
-     * PATCH /address/:id
-     * Adresse ändern
+     * PUT /bewertung/:id
+     * PATCH /bewertung/:id
+     * Bewertung ändern
      */
     async update(req, res, next) {
         let result = await this._service.update(req.params.id, req.body);
@@ -112,8 +112,8 @@ export default class BewertungController {
     }
 
     /**
-     * DELETE /address/:id
-     * Adresse löschen
+     * DELETE /bewertung/:id
+     * Bewertung löschen
      */
     async delete(req, res, next) {
         await this._service.delete(req.params.id)

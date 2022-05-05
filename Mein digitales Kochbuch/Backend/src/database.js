@@ -31,8 +31,6 @@ class DatabaseFactory {
      * wenigstens gleich ein paar Daten.
      */
     async _createDemoData() {
-        //// TODO: Methode anpassen, um zur eigenen App passende Demodaten anzulegen ////
-        //// oder die Methode ggf. einfach löschen und ihren Aufruf oben entfernen.  ////
         let rezepte = this.database.collection("rezepte");
 
         if (await rezepte.estimatedDocumentCount() === 0) {

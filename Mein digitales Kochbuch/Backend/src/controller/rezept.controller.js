@@ -5,9 +5,9 @@ import {wrapHandler} from "../utils.js";
 import RestifyError from "restify-errors";
 
 /**
- * HTTP-Controller-Klasse für Adressbucheinträge. Diese Klasse registriert
+ * HTTP-Controller-Klasse für Rezepteinträge. Diese Klasse registriert
  * alle notwendigen URL-Handler beim Webserver für einen einfachen REST-
- * Webservice zum Lesen und Schreiben von Adressen.
+ * Webservice zum Lesen und Schreiben von Rezepten.
  */
 export default class RezeptController {
     /**
@@ -20,11 +20,11 @@ export default class RezeptController {
         this._service = new RezeptService();
         this._prefix = prefix;
 
-        // Collection: Adressen
+        // Collection: Rezepte
         server.get(prefix, wrapHandler(this, this.search));
         server.post(prefix, wrapHandler(this, this.create));
 
-        // Entity: Adresse
+        // Entity: Rezept
         server.get(prefix + "/:id", wrapHandler(this, this.read));
         server.put(prefix + "/:id", wrapHandler(this, this.update));
         server.patch(prefix + "/:id", wrapHandler(this, this.update));
@@ -51,8 +51,8 @@ export default class RezeptController {
     }
 
     /**
-     * GET /address
-     * Adressen suchen
+     * GET /rezept
+     * Rezepte suchen
      */
     async search(req, res, next) {
         let result = await this._service.search(req.query);
@@ -62,8 +62,8 @@ export default class RezeptController {
     }
 
     /**
-     * POST /address
-     * Neue Adresse anlegen
+     * POST /rezept
+     * Neues Rezept anlegen
      */
     async create(req, res, next) {
         let result = await this._service.create(req.body);
@@ -77,8 +77,8 @@ export default class RezeptController {
     }
 
     /**
-     * GET /address/:id
-     * Adresse auslesen
+     * GET /rezept/:id
+     * Spezielles Rezept auslesen
      */
     async read(req, res, next) {
         let result = await this._service.read(req.params.id);
@@ -94,9 +94,9 @@ export default class RezeptController {
     }
 
     /**
-     * PUT /address/:id
-     * PATCH /address/:id
-     * Adresse ändern
+     * PUT /rezept/:id
+     * PATCH /rezept/:id
+     * Spezielles Rezept ändern
      */
     async update(req, res, next) {
         let result = await this._service.update(req.params.id, req.body);
@@ -112,8 +112,8 @@ export default class RezeptController {
     }
 
     /**
-     * DELETE /address/:id
-     * Adresse löschen
+     * DELETE /rezept/:id
+     * Spezielles Rezept löschen
      */
     async delete(req, res, next) {
         await this._service.delete(req.params.id)

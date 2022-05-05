@@ -4,9 +4,9 @@ import DatabaseFactory from "../database.js";
 import {ObjectId} from "mongodb";
 
 /**
- * Geschäftslogik zur Verwaltung von Adressen. Diese Klasse implementiert die
+ * Geschäftslogik zur Verwaltung von Rezepten. Diese Klasse implementiert die
  * eigentliche Anwendungslogik losgelöst vom technischen Übertragungsweg.
- * Die Adressen werden der Einfachheit halber in einer MongoDB abgelegt.
+ * Die Rezepte werden der Einfachheit halber in einer MongoDB abgelegt.
  */
 export default class RezeptService {
     /**
@@ -17,13 +17,13 @@ export default class RezeptService {
     }
 
     /**
-     * Adressen suchen. Unterstützt wird lediglich eine ganz einfache Suche,
+     * Rezept suchen. Unterstützt wird lediglich eine ganz einfache Suche,
      * bei der einzelne Felder auf exakte Übereinstimmung geprüft werden.
      * Zwar unterstützt MongoDB prinzipiell beliebig komplexe Suchanfragen.
      * Um das Beispiel klein zu halten, wird dies hier aber nicht unterstützt.
      *
      * @param {Object} query Optionale Suchparameter
-     * @return {Promise} Liste der gefundenen Adressen
+     * @return {Promise} Liste der gefundenen Rezepte
      */
     async search(query) {
         let cursor = this._rezepte.find(query, {
@@ -36,10 +36,10 @@ export default class RezeptService {
     }
 
     /**
-     * Speichern einer neuen Adresse.
+     * Speichern eines neuen Rezeptes.
      *
-     * @param {Object} rezept Zu speichernde Adressdaten
-     * @return {Promise} Gespeicherte Adressdaten
+     * @param {Object} rezept Zu speichernde Rezeptdaten
+     * @return {Promise} Gespeicherte Rezeptdaten
      */
     async create(rezept) {
         rezept = rezept || {};
@@ -57,10 +57,10 @@ export default class RezeptService {
     }
 
     /**
-     * Auslesen einer vorhandenen Adresse anhand ihrer ID.
+     * Auslesen eines vorhandenen Rezeptes anhand seiner ID.
      *
-     * @param {String} id ID der gesuchten Adresse
-     * @return {Promise} Gefundene Adressdaten
+     * @param {String} id ID des gesuchten Rezeptes
+     * @return {Promise} Gefundene Rezeptdaten
      */
     async read(id) {
         let result = await this._rezepte.findOne({_id: new ObjectId(id)});
@@ -68,12 +68,12 @@ export default class RezeptService {
     }
 
     /**
-     * Aktualisierung einer Adresse, durch Überschreiben einzelner Felder
-     * oder des gesamten Adressobjekts (ohne die ID).
+     * Aktualisierung eines Rezeptes, durch Überschreiben einzelner Felder
+     * oder des gesamten Rezeptobjektes (ohne die ID).
      *
-     * @param {String} id ID der gesuchten Adresse
-     * @param {[type]} rezept Zu speichernde Adressdaten
-     * @return {Promise} Gespeicherte Adressdaten oder undefined
+     * @param {String} id ID des gesuchten Rezeptes
+     * @param {[type]} rezept Zu speichernde Rezeptdaten
+     * @return {Promise} Gespeicherte Rezeptdaten oder undefined
      */
     async update(id, rezept) {
         let oldRezept = await this._rezepte.findOne({_id: new ObjectId(id)});
@@ -94,9 +94,9 @@ export default class RezeptService {
     }
 
     /**
-     * Löschen einer Adresse anhand ihrer ID.
+     * Löschen eines Rezeptes anhand seiner ID.
      *
-     * @param {String} id ID der gesuchten Adresse
+     * @param {String} id ID des gesuchten Rezeptes
      * @return {Promise} Anzahl der gelöschten Datensätze
      */
     async delete(id) {
