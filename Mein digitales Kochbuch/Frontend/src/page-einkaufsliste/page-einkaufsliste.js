@@ -1,8 +1,3 @@
-/**
- * Hier nötige Funktionalität der Einkaufsliste hinzufügen (siehe page-list.js):
- * Übersicht und Button der aus Einkaufsliste wieder löscht
- */
-
  "use strict";
 
  import Page from "../page.js";
@@ -75,14 +70,14 @@
      }
 
      /**
-      * Löschen der übergebenen Adresse. Zeigt einen Popup, ob der Anwender
-      * die Adresse löschen will und löscht diese dann.
+      * Löschen des übergebenen Rezepts aus der Einkaufsliste. Zeigt einen Popup, ob der Anwender
+      * das Rezept löschen will und löscht dieses dann.
       *
       * @param {Integer} id ID des zu löschenden Datensatzes
       */
      async _askDelete(id) {
          // Sicherheitsfrage zeigen
-         let answer = confirm("Soll das ausgewählte Rezept wirklich gelöscht werden?");
+         let answer = confirm("Soll das ausgewählte Rezept wirklich von der Einkaufsliste gelöscht werden?");
          if (!answer) return;
 
          // Datensatz löschen
