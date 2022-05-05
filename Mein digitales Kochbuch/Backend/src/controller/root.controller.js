@@ -48,7 +48,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
              },
              {
                  _name: "bewertungen",
-                 query: {url: "/bewertungen", method: "GET", queryParams: ["search", "bewertungstitel", "bepunktung", "bewertungstext"]},
+                 query: {url: "/bewertungen", method: "GET", queryParams: ["search", "rezeptname", "bewertungstitel", "bepunktung", "bewertungstext"]},
                  create: {url: "/bewertungen", method: "POST"},
              },
              {

@@ -169,7 +169,7 @@ paths:
           description: Not Found
       operationId: delete-rezept-id
       description: Gewähltes Rezept wird gelöscht
-  /bewertung:
+  /rezept/bewertung:
     get:
       summary: Bewertung ansehen
       responses:
@@ -181,16 +181,11 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Bewertung'
-      operationId: get-bewertung
+      operationId: get-rezept-bewertung
       description: Bewertung lesen
       tags:
         - Bewertungsliste
       parameters:
-        - schema:
-            type: string
-          in: query
-          name: rezeptname
-          description: Gesuchter Rezeptname
         - schema:
             type: string
           in: query
@@ -217,7 +212,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Bewertung'
-      operationId: post-bewertung
+      operationId: post-rezept-bewertung
       description: Bewertung anlegen
       requestBody:
         content:
@@ -226,7 +221,7 @@ paths:
               $ref: '#/components/schemas/Bewertung'
         description: Daten der anzulgenden Bewertung
     parameters: []
-  '/bewertung/{id}':
+  '/rezept/bewertung/{id}':
     parameters:
       - schema:
           type: string
@@ -246,7 +241,7 @@ paths:
                 $ref: '#/components/schemas/Bewertung'
         '404':
           description: Not Found
-      operationId: get-bewertung-id
+      operationId: get-rezept-bewertung-id
       description: Einzelnes Rezept vom Server lesen
     put:
       summary: Bewertung bearbeiten
@@ -261,7 +256,7 @@ paths:
                 $ref: '#/components/schemas/Bewertung'
         '404':
           description: Not Found
-      operationId: put-bewertung-id
+      operationId: put-rezept-bewertung-id
       description: 'Bewertungsdatensatz bearbeiten. Es könne alle Felder geändert werden, mit ausnahme der id des Datensatzes. Der Versuch, die id zu ändern, wird vom Server stillschweigend ignoriert.'
     delete:
       summary: Bewertung löschen
@@ -272,7 +267,7 @@ paths:
           description: No Content
         '404':
           description: Not Found
-      operationId: delete-bewertung-id
+      operationId: delete-rezept-bewertung-id
       description: Bewerungsdatensatz löschen
     patch:
       summary: Bewertung einzelne Felder ändern
@@ -287,7 +282,7 @@ paths:
                 $ref: '#/components/schemas/Bewertung'
         '404':
           description: Not Found
-      operationId: patch-bewertung-id
+      operationId: patch-rezept-bewertung-id
       description: 'Bewertungsdatensatz bearbeiten. Es könne einzelne Felder geändert werden, mit ausnahme der id des Datensatzes. Der Versuch, die id zu ändern, wird vom Server stillschweigend ignoriert.'
   /favoriten:
     get:
@@ -483,11 +478,8 @@ components:
     Bewertung:
       title: Bewertung
       type: object
-      description: Bewertung eines Rezeptes.
       properties:
         _id:
-          type: string
-        rezeptname:
           type: string
         bewertungstitel:
           type: string
@@ -495,6 +487,7 @@ components:
           type: string
         bewertungstext:
           type: string
+      description: Bewertung eines Rezeptes.
 tags:
   - name: Bewertung
   - name: Bewertungsliste
