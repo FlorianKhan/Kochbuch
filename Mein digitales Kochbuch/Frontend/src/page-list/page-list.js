@@ -77,11 +77,11 @@ export default class PageList extends Page {
 
             // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Favoritenliste
             // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalt Favoritenliste möglich machen)
-            //liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset._id));
+            liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset._id));
 
             // Einkaufsliste Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Einkaufsliste
             // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalt Einkaufsliste möglich machen)
-            //liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset._id));
+            liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset._id));
         }
     }
 
@@ -115,14 +115,26 @@ export default class PageList extends Page {
     }
         //Favorit-Methoden (Kopie ausprogrammieren)
 
-    //async _hinzufügenFavorit(id) {
-    //    try {
-    //        this._app.backend.fetch("ADD", `/favoriten`);
-    //    } catch (ex) {
-    //        this._app.showException(ex);
-    //        return;
-    //    }
-    //}
+    async _hinzufügenFavorit(id) {
+        let answer = confirm("Soll das ausgewählte Rezept wirklich zu Favoriten hinzugefügt werden?");
+        if (!answer) return;
+        try {
+            this._app.backend.fetch("CREATE", `/favorit`);
+        } catch (ex) {
+            this._app.showException(ex);
+            return;
+        }
+    }
 
         //Einkaufsliste-Methode (Kopie ausprogrammieren)
+    async _hinzufügenEinkaufsliste(id) {
+        let answer = confirm("Soll das ausgewählte Rezept wirklich zur Einkaufsliste hinzugefügt werden?");
+        if (!answer) return;
+        try {
+            this._app.backend.fetch("CREATE", `/einkaufsliste`);
+        } catch (ex) {
+            this._app.showException(ex);
+            return;
+        }
+    }
 };
