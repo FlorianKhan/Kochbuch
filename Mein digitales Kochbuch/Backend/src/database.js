@@ -59,13 +59,13 @@ class DatabaseFactory {
                 {
                     rezeptname: "Erdbeerkuchen",
                     bewertungstitel: "Super lecker...",
-                    bepunktung: "5 Sterne",
+                    bepunktung: "⭐️⭐️⭐️⭐️⭐️",
                     bewertungstext: "Ich habe noch nie einen so tollen Kuchen gegessen. Zu empfehlen!"
                 },
                 {
                     rezeptname: "Apfelkuchenkuchen",
                     bewertungstitel: "Nicht so meins!",
-                    bepunktung: "2 Sterne",
+                    bepunktung: "⭐️⭐️",
                     bewertungstext: "Finde ich ein wenig matschig. Geschmackssache."
                 },
             ]);
