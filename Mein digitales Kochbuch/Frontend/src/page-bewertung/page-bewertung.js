@@ -18,11 +18,11 @@ export default class PageBewertung extends Page {
      * für die ID der Klasse -> Bewertung wird von diser verwendet
      * @param {Integer} editId ID des bearbeiteten Datensatzes (nicht bearbeiteten sondern des Rezeptes)
      */
-    constructor(app) {
-        super(app, HtmlTemplate);
+    //constructor(app) {
+    //    super(app, HtmlTemplate);
 
-        this._emptyMessageElement = null;
-    }
+    //    this._emptyMessageElement = null;
+    //}
 
 // Konstruktor von edit --> damit ich die ID des Rezeptes habe (vom Prinzip wird nur die ID benötigt alle andern Daten sind mir egal)
     constructor(app, editId) {
