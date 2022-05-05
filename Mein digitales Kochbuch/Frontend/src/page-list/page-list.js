@@ -73,7 +73,7 @@ export default class PageList extends Page {
 
             // Bewertung Handler (beim Klick auf diesen Button muss auf die Seite Bewertungen gewechselt wwerden)
             //liElement.querySelector(".action.bewertung").addEventListener("click", () => location.hash = `#/bewertungen`);
-            //liElement.querySelector(".action.bewerten").addEventListener("click", () => location.hash = `#/newBewertung/${PageBewertung.dataset._id}`);
+            liElement.querySelector(".action.bewerten").addEventListener("click", () => location.hash = `#/newBewertung/`);
 
             // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Favoritenliste
             // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalt Favoritenliste möglich machen)
@@ -118,12 +118,15 @@ export default class PageList extends Page {
     async _hinzufügenFavorit(id) {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zu Favoriten hinzugefügt werden?");
         if (!answer) return;
+
         try {
             this._app.backend.fetch("CREATE", `/favorit`);
         } catch (ex) {
             this._app.showException(ex);
             return;
         }
+        this._mainElement.querySelector(`[data-id="${id}"]`)?.createElement();
+
     }
 
         //Einkaufsliste-Methode (Kopie ausprogrammieren)
@@ -131,10 +134,11 @@ export default class PageList extends Page {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zur Einkaufsliste hinzugefügt werden?");
         if (!answer) return;
         try {
-            this._app.backend.fetch("CREATE", `/einkaufsliste`);
+            this._app.backend.fetch("CREATE", `/einkaufsliste?id=` + id);
         } catch (ex) {
             this._app.showException(ex);
             return;
         }
+        this._mainElement.querySelector(`[data-id="${id}"]`)?.createElement();
     }
 };
