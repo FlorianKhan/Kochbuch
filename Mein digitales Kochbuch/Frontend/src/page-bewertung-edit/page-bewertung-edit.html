@@ -6,7 +6,7 @@
         padding: 1em;
     }
 
-    main .rezeptname, .dauer, .schwierigkeitsgrad, .zutaten, .zubereitung  {
+    main .rezeptname, .bewertungstitel, .bepunktung, .bewertungstext  {
         display: block;
         width: 100%;
 
@@ -52,7 +52,8 @@
 <main>
     <div>
       <!-- Eingabefelder/Bearbeitungsfelder -->
-        <div class="formBewertung">
+        <div class="form">
+            <input class="rezeptname" placeholder="Rezeptname" value="$REZEPTNAME$" />
             <input class="bewertungstitel" placeholder="Bewertungstitel" value="$BEWERTUNGSTITEL$" />
             <input class="bepunktung" placeholder="Bepunktung" value="$BEPUNKTUNG$" type="search" list="mylistBepunktung"/>
 
@@ -70,7 +71,7 @@
 
 <!-- Funktion speichern -->
         <div class="actions">
-            <div class="action saveBewertung">
+            <div class="action save">
                 <a>💾</a>
             </div>
         </div>

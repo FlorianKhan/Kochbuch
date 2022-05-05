@@ -18,33 +18,10 @@ export default class PageBewertung extends Page {
      * für die ID der Klasse -> Bewertung wird von diser verwendet
      * @param {Integer} editId ID des bearbeiteten Datensatzes (nicht bearbeiteten sondern des Rezeptes)
      */
-    //constructor(app) {
-    //    super(app, HtmlTemplate);
-
-    //    this._emptyMessageElement = null;
-    //}
-
-// Konstruktor von edit --> damit ich die ID des Rezeptes habe (vom Prinzip wird nur die ID benötigt alle andern Daten sind mir egal)
-    constructor(app, editId) {
+    constructor(app) {
         super(app, HtmlTemplate);
 
-        // Bearbeiteter Datensatz
-        this._editId = editId;
-
-        //this._dataset = {
-        //    rezeptname: "",
-        //    dauer: "",
-        //    schwierigkeitsgrad: "",
-        //    zutaten: "",
-        //    zubereitung: "",
-        //};
-        //
-        // Eingabefelder
-        //this._rezeptnameInput = null;
-        //this._dauerInput  = null;
-        //this._schwierigkeitsgradInput     = null;
-        //this._zutatenInput     = null;
-        //this._zubereitungInput     = null;
+        this._emptyMessageElement = null;
     }
 
     /**
@@ -57,35 +34,30 @@ export default class PageBewertung extends Page {
      * `this._mainElement` nachbearbeitet werden, um die angezeigten Inhalte
      * zu beeinflussen.
      */
-    async init() {
-        // HTML-Inhalt nachladen
-        await super.init();
-        this._title = "Übersicht";
+     async init() {
+         // HTML-Inhalt nachladen
+         await super.init();
+         this._title = "Bewertung Übersicht";
 
-        // Wenn keine Daten vorhanden sind, werden keine Platzhalter angezeigt (auskommenteieren)
-        //let data = await this._app.backend.fetch("GET", "/rezept");
-        //let data = await this._app.backend.fetch("GET", "/bewertung");
+         // Platzhalter anzeigen, wenn noch keine Daten vorhanden sind
+         let data = await this._app.backend.fetch("GET", "/bewertung");
+         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
-        //Keine Daten --> eigener Platzhalter wird angezeigt
-        this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholderBewertung");
+         if (data.length) {
+             this._emptyMessageElement.classList.add("hidden");
+         }
 
-        //wenn es Eöemente gibt wird dieser nicht angezeigt
-        if (data.length) {
-            this._emptyMessageElement.classList.add("hidden");
-        }
+         // Je Datensatz einen Listeneintrag generieren
+         let olElement = this._mainElement.querySelector("ol");
 
-//Verweis auf die Klasse list... aus HTML --> mit Feldern
-        // Je Datensatz einen Listeneintrag generieren
-        let olElement = this._mainElement.querySelector("ol");
+         let templateElement = this._mainElement.querySelector(".list-entry");
+         let templateHtml = templateElement.outerHTML;
+         templateElement.remove();
 
-        let templateElement = this._mainElement.querySelector(".list-entryBewertung");
-        let templateHtml = templateElement.outerHTML;
-        templateElement.remove();
-
-        for (let index in data) {
-            // Platzhalter ersetzen
-            let dataset = data[index];
-            let html = templateHtml;
+         for (let index in data) {
+             // Platzhalter ersetzen
+             let dataset = data[index];
+             let html = templateHtml;
 
 //eigene ID (pagebewertung ID) und Rezept ID (pageList ID)      --> zuordung
 
@@ -108,9 +80,9 @@ export default class PageBewertung extends Page {
 
 
             // Event Handler registrieren
-            liElement.querySelector(".action.editBewertung").addEventListener("click", () => location.hash = `#/bewertungEdit/${dataset._id}`);
+            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/editBewertung/${dataset._id}`);
             // Löschen der datenset._id --> somit nicht das Rezept
-            liElement.querySelector(".action.deleteBewertung").addEventListener("click", () => this._askDelete(dataset._id));
+            liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
         }
     }
 
