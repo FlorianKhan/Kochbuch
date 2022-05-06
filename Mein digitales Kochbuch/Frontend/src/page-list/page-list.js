@@ -140,5 +140,4 @@ export default class PageList extends Page {
         // Zurück zur Übersicht
         location.hash = "#/einkaufsliste";
     }
-  }
 };
