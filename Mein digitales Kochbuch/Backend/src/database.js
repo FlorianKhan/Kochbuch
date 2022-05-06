@@ -9,6 +9,7 @@ import { MongoClient } from "mongodb";
  * `mongodb` oder `database` ausgelesen werden.
  */
 class DatabaseFactory {
+
     /**
      * Ersatz für den Konstruktor, damit aus dem Hauptprogramm heraus die
      * Verbindungs-URL der MongoDB übergeben werden kann. Hier wird dann
@@ -32,7 +33,6 @@ class DatabaseFactory {
      */
     async _createDemoData() {
         let rezepte = this.database.collection("rezepte");
-
         if (await rezepte.estimatedDocumentCount() === 0) {
             rezepte.insertMany([
                 {
@@ -48,12 +48,10 @@ class DatabaseFactory {
                     schwierigkeitsgrad: "7",
                     zutaten: "<p> - 250g Mehl <br /> \ - 1000g Äpfel <br /> \ - 400l Milch <br /> \ - 150g Zucker</p>",
                     zubereitung:"Mehl mit Milch und Zucker verühren. Und so weiter. Test."
-
                 },
             ]);
         }
         let bewertungen = this.database.collection("bewertungen");
-
         if (await bewertungen.estimatedDocumentCount() === 0) {
             bewertungen.insertMany([
                 {
