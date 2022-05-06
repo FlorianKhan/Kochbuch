@@ -9,6 +9,7 @@ import {ObjectId} from "mongodb";
  * Die Einkaufsliste wird der Einfachheit halber in einer MongoDB abgelegt.
  */
 export default class EinkaufslisteService {
+
     /**
      * Konstruktor.
      */
@@ -31,7 +32,6 @@ export default class EinkaufslisteService {
                 rezeptname: 1,
             }
         });
-
         return cursor.toArray();
     }
 
@@ -44,11 +44,9 @@ export default class EinkaufslisteService {
     async create(rezeptID) {
         einkauf = rezeptID || {};
         console.log(rezeptID);
-
         let newEinkauf = {
             rezeptname:               rezept.rezeptname         || ""
         };
-
         let result = await this._einkäufe.insertOne(newEinkauf);
         return await this._einkäufe.findOne({_id: result.insertedId});
     }
