@@ -5,10 +5,12 @@ import {wrapHandler} from "../utils.js";
 import RestifyError from "restify-errors";
 
 /**
-* HTTP-Controller-Klasse für Rezepteinträge. Diese Klasse registriert
-* alle notwendigen URL-Handler beim Webserver für einen einfachen REST-
-* Webservice zum Lesen und Schreiben von Rezepten.
+* HTTP-Controller-Klasse für Rezepteinträge.
+* Diese Klasse registriert alle notwendigen URL-Handler beim Webserver
+* für einen einfachen REST-Webservice zum Lesen und Schreiben von
+* Rezepten.
 */
+
 export default class RezeptController {
 
   /**
@@ -17,6 +19,7 @@ export default class RezeptController {
   * @param {Object} server Restify Serverinstanz
   * @param {String} prefix Gemeinsamer Prefix aller URLs
   */
+
   constructor(server, prefix) {
     this._service = new RezeptService();
     this._prefix = prefix;
@@ -40,6 +43,7 @@ export default class RezeptController {
   *
   * @param {Object} entity Zu verändernder Datensatz.
   */
+
   _insertHateoasLinks(entity) {
     let url = `${this._prefix}/${entity._id}`;
     entity._links = {
@@ -53,10 +57,12 @@ export default class RezeptController {
   /**
   * GET /rezept
   * Rezepte suchen
+  *
   * @param {Object} req
   * @param {Object} res
   * @param {Object} next
   */
+
   async search(req, res, next) {
     let result = await this._service.search(req.query);
     result.forEach(entity => this._insertHateoasLinks(entity));
@@ -67,10 +73,12 @@ export default class RezeptController {
   /**
   * POST /rezept
   * Neues Rezept anlegen
+  *
   * @param {Object} req
   * @param {Object} res
   * @param {Object} next
   */
+
   async create(req, res, next) {
     let result = await this._service.create(req.body);
     this._insertHateoasLinks(result);
@@ -82,11 +90,13 @@ export default class RezeptController {
 
   /**
   * GET /rezept/:id
-  * Spezielles Rezept auslesen
+  * Rezept mit der angegebenen ID auslesen
+  *
   * @param {Object} req
   * @param {Object} res
   * @param {Object} next
   */
+
   async read(req, res, next) {
     let result = await this._service.read(req.params.id);
     this._insertHateoasLinks(result);
@@ -101,11 +111,13 @@ export default class RezeptController {
   /**
   * PUT /rezept/:id
   * PATCH /rezept/:id
-  * Spezielles Rezept ändern
+  * Rezept mit der angegebenen ID ändern
+  *
   * @param {Object} req
   * @param {Object} res
   * @param {Object} next
   */
+
   async update(req, res, next) {
     let result = await this._service.update(req.params.id, req.body);
     this._insertHateoasLinks(result);
@@ -119,15 +131,18 @@ export default class RezeptController {
 
   /**
   * DELETE /rezept/:id
-  * Spezielles Rezept löschen
+  * Rezept mit der angegebenen ID löschen
+  *
   * @param {Object} req
   * @param {Object} res
-  * @param {Object} next 
+  * @param {Object} next
   */
+
   async delete(req, res, next) {
     await this._service.delete(req.params.id)
     res.status(204);
     res.sendResult({});
     return next();
   }
+
 }
