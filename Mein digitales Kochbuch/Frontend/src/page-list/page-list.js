@@ -88,41 +88,11 @@ export default class PageList extends Page {
     }
 
 
-  /**
-  * Löschen der übergebenen Rezepte. Zeigt einen Popup, ob der Anwender
-  * das Rezept löschen will und löscht dieses dann.
-  *
-  * @param {Integer} id ID des zu löschenden Datensatzes
-  */
-  async _askDelete(id) {
-
-    // Sicherheitsfrage zeigen
-    let answer = confirm("Soll das ausgewählte Rezept wirklich gelöscht werden?");
-    if (!answer) return;
-
-    // Datensatz löschen
-    try {
-      this._app.backend.fetch("DELETE", `/rezept/${id}`);
-    } catch (ex) {
-      this._app.showException(ex);
-      return;
-    }
-
-    // HTML-Element entfernen
-    this._mainElement.querySelector(`[data-id="${id}"]`)?.remove();
-
-    if (this._mainElement.querySelector("[data-id]")) {
-      this._emptyMessageElement.classList.add("hidden");
-    } else {
-      this._emptyMessageElement.classList.remove("hidden");
-    }
-  }
-
     /**
     * Hinzufügen von Favoriten. Zeigt einen Popup, ob der Anwender
     * das Rezept zu den Favoriten hinzufügen will und tut dieses dann im Anschluss.
     *
-    * @param {Integer} id ID des Rezeptes, welches zu den Favoriten hinzugefügt werden soll
+    * @param {Array[Integer]} dataset Daten des Rezeptes, welches zu den Favoriten hinzugefügt werden soll
     */
     async _hinzufügenFavorit(dataset) {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zu Favoriten hinzugefügt werden?");
@@ -148,7 +118,7 @@ export default class PageList extends Page {
     * Hinzufügen zur Einkaufsliste. Zeigt einen Popup, ob der Anwender
     * das Rezept auf die Einkaufsliste hinzufügen will und tut dieses dann im Anschluss.
     *
-    * @param {Integer} id ID des Rezeptes, welches zur Einkaufsliste hinzugefügt werden soll
+    * @param {Array[Integer]} dataset Daten des Rezeptes, welches zur Einkaufsliste hinzugefügt werden soll
     */
     async _hinzufügenEinkaufsliste(dataset) {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zur Einkaufsliste hinzugefügt werden?");
