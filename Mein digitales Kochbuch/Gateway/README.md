@@ -1,20 +1,18 @@
-SPA/REST-Vorlage: Gateway
-=========================
-
-__TODO: Dokument überarbeiten__
+Kochbuch: Gateway
+===================
 
 Inhaltsverzeichnis
 ------------------
 
  1. [Kurzbeschreibung](#kurzbeschreibung)
- 1. [Konfiguration des Gateway-Servers](#konfiguration-das-gateway-servers)
- 1. [Start mit Docker Compose](#start-mit-docker-compose)
- 1. [Produktives Container Image bauen](#produktives-container-image-bauen)
+ 2. [Konfiguration des Gateway-Servers](#konfiguration-das-gateway-servers)
+ 3. [Start mit Docker Compose](#start-mit-docker-compose)
+ 4. [Produktives Container Image bauen](#produktives-container-image-bauen)
 
-Kurzbeschreibung
+1. Kurzbeschreibung
 ----------------
 
-Dies ist der Gateway-Server der Vorlageanwendung, der alle Einzelservices
+Dies ist der Gateway-Server des Kochbuchs, der alle Einzelservices
 der Anwendung hinter einem zentralen HTTP-Endpunkt verbirgt. Für die Entwicklung
 ist es tatsächlich besser, jeden Service über eine localhost-Adresse des eigenen
 Rechners direkt ansprechen zu können. Setzt sich eine Anwendung allerdings aus
@@ -44,7 +42,7 @@ Sicherheitsprüfungen und andere Policies zu zentralisieren.
 Ob die Webanwendung (hier durch den `frontend`-Service bereitgestellt) über
 das Gateway oder eine eigene Domain aufgerufen wird, ist Geschmackssache und
 hängt auch ein wenig von der Gesamtarchitektur der Anwendung ab. Dann häufig
-verwenden Frontend und Backend auch getrennte URLs wir https://www.beispiel.de
+verwenden Frontend und Backend auch getrennte URLs wie https://www.beispiel.de
 für das Frontend und https://api.beispiel.de für das Backend, wobei beide
 Teile auch auf unterschiedlicher Infrastruktur laufen. Meist besitzen die
 Anwendungen dann aber auch deutlich mehr als nur einen REST-Backendservice,
@@ -59,7 +57,7 @@ Art Standard im Cloud-Umfeld bewährt. Viele kommerzielle oder freie Gatewy-Serv
 sowie Ingress-Router basieren im Kern auf nginx mit einer schönen Benutzeroberfläche
 drumherum.
 
-Konfiguration des Gateway-Servers
+2. Konfiguration des Gateway-Servers
 ---------------------------------
 
 Kommerzielle Produkte bieten oft eine grafische Benutzeroberfläche, mit der
@@ -76,7 +74,7 @@ auch nicht sehr kompliziert aufgebaut ist. Im Zweifelsfall hilft natürlich
 immer ein Blick in die [Dokumentation von nginx](https://nginx.org/en/docs/)
 wobei hier insbesondere der alphabetische Index aller "Directiven" nützlich ist.
 
-Start mit Docker Compose
+3. Start mit Docker Compose
 ------------------------
 
 Am einfachsten lässt sich die App mit Docker Compose aus dem Wurzelverzeichnis
@@ -90,15 +88,15 @@ Befehle im Detail:
 Der nachfolgende Abschnitt in dieser Datei beschreiben hingegen, was dabei im
 Hintergrund passiert bzw. wie das Gateway isoliert gestartet werden kann.
 
-Produktives Container-Image bauen
+4. Produktives Container-Image bauen
 ---------------------------------
 
 Für den Produktivbetrieb konfiguriert das beigefügte `Dockerfile` einen `nginx`
 Webserver als Reverse Proxy bzw. Gateway-Server (beide Begriffe sind hier weitgehend
 synonym zu verstehen). Folgende Befehle werden hierfür benötigt:
 
- * `docker build -t example-gateway .` zum Bauen des Containers
- * `docker run -d -p 8080:81 --net examplenet --name gateway example-gateway` zum Ausführen des Containers
+ * `docker build -t meindigitaleskochbuch-gateway .` zum Bauen des Containers
+ * `docker run -d -p 8080:81 --net meindigitaleskochbuch --name gateway meindigitaleskochbuch-gateway` zum Ausführen des Containers
  * `docker container stop gateway` zum Stoppen des Containers
  * `docker system prune` zum Aufräumen nicht mehr benötigter Daten
 
