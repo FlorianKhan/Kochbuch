@@ -52,7 +52,7 @@ services:
             ME_CONFIG_MONGODB_ADMINPASSWORD: admin
             ME_CONFIG_MONGODB_URL: mongodb://dbuser:dbpass@mongodb:27017/
 
-    # Adressbuch-Backend (Entwicklungsmodus)
+    # Kochbuch-Backend (Entwicklungsmodus)
     backend:
         depends_on:
             - mongodb
@@ -70,7 +70,7 @@ services:
         working_dir: /app
         command: sh -c "npm i; npm start"
 
-    # Adressbuch-Frontend (Entwicklungsmodus)
+    # Kochbuch-Frontend (Entwicklungsmodus)
     frontend:
         image: node:17-alpine
         restart: always
