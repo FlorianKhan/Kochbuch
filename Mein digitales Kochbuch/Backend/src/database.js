@@ -31,8 +31,6 @@ class DatabaseFactory {
      * wenigstens gleich ein paar Daten.
      */
     async _createDemoData() {
-        //// TODO: Methode anpassen, um zur eigenen App passende Demodaten anzulegen ////
-        //// oder die Methode ggf. einfach löschen und ihren Aufruf oben entfernen.  ////
         let rezepte = this.database.collection("rezepte");
 
         if (await rezepte.estimatedDocumentCount() === 0) {
@@ -51,6 +49,24 @@ class DatabaseFactory {
                     zutaten: "<p> - 250g Mehl <br /> \ - 1000g Äpfel <br /> \ - 400l Milch <br /> \ - 150g Zucker</p>",
                     zubereitung:"Mehl mit Milch und Zucker verühren. Und so weiter. Test."
 
+                },
+            ]);
+        }
+        let bewertungen = this.database.collection("bewertungen");
+
+        if (await bewertungen.estimatedDocumentCount() === 0) {
+            bewertungen.insertMany([
+                {
+                    rezeptname: "Erdbeerkuchen",
+                    bewertungstitel: "Super lecker...",
+                    bepunktung: "⭐️⭐️⭐️⭐️⭐️",
+                    bewertungstext: "Ich habe noch nie einen so tollen Kuchen gegessen. Zu empfehlen!"
+                },
+                {
+                    rezeptname: "Apfelkuchenkuchen",
+                    bewertungstitel: "Nicht so meins!",
+                    bepunktung: "⭐️⭐️",
+                    bewertungstext: "Finde ich ein wenig matschig. Geschmackssache."
                 },
             ]);
         }

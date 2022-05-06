@@ -4,9 +4,9 @@ import DatabaseFactory from "../database.js";
 import {ObjectId} from "mongodb";
 
 /**
- * Geschäftslogik zur Verwaltung von Adressen. Diese Klasse implementiert die
+ * Geschäftslogik zur Verwaltung der Einkaufsliste. Diese Klasse implementiert die
  * eigentliche Anwendungslogik losgelöst vom technischen Übertragungsweg.
- * Die Adressen werden der Einfachheit halber in einer MongoDB abgelegt.
+ * Die Einkaufsliste wird der Einfachheit halber in einer MongoDB abgelegt.
  */
 export default class EinkaufslisteService {
     /**
@@ -17,13 +17,13 @@ export default class EinkaufslisteService {
     }
 
     /**
-     * Adressen suchen. Unterstützt wird lediglich eine ganz einfache Suche,
+     * Einträge der Einkaufsliste suchen. Unterstützt wird lediglich eine ganz einfache Suche,
      * bei der einzelne Felder auf exakte Übereinstimmung geprüft werden.
      * Zwar unterstützt MongoDB prinzipiell beliebig komplexe Suchanfragen.
      * Um das Beispiel klein zu halten, wird dies hier aber nicht unterstützt.
      *
      * @param {Object} query Optionale Suchparameter
-     * @return {Promise} Liste der gefundenen Adressen
+     * @return {Promise} Liste der gefundenen Einträge
      */
     async search(query) {
         let cursor = this._einkäufe.find(query, {
@@ -36,17 +36,17 @@ export default class EinkaufslisteService {
     }
 
     /**
-     * Speichern einer neuen Adresse.
+     * Speichern eines neuen Eintrags.
      *
-     * @param {Object} rezept Zu speichernde Adressdaten
-     * @return {Promise} Gespeicherte Adressdaten
+     * @param {Object} rezept Zu speichernde Daten der Einkaufsliste
+     * @return {Promise} Gespeicherte Daten der Einkaufsliste
      */
-    async create(einkauf) {
-        einkauf = einkauf || {};
+    async create(rezeptID) {
+        einkauf = rezeptID || {};
+        console.log(rezeptID);
 
         let newEinkauf = {
-            rezeptname:               rezept.rezeptname         || "",
-            zutaten:                  rezept.zutaten            || ""
+            rezeptname:               rezept.rezeptname         || ""
         };
 
         let result = await this._einkäufe.insertOne(newEinkauf);
@@ -54,10 +54,10 @@ export default class EinkaufslisteService {
     }
 
     /**
-     * Auslesen einer vorhandenen Adresse anhand ihrer ID.
+     * Auslesen eines vorhandenen Eintrags anhand seiner ID.
      *
-     * @param {String} id ID der gesuchten Adresse
-     * @return {Promise} Gefundene Adressdaten
+     * @param {String} id ID des gesuchten Eintrags
+     * @return {Promise} Gefundene Daten des Eintrags
      */
     async read(id) {
         let result = await this._einkäufe.findOne({_id: new ObjectId(id)});
@@ -65,9 +65,9 @@ export default class EinkaufslisteService {
     }
 
     /**
-     * Löschen einer Adresse anhand ihrer ID.
+     * Löschen eines Eintrags anhand seiner ID.
      *
-     * @param {String} id ID der gesuchten Adresse
+     * @param {String} id ID des gesuchten Eintrags
      * @return {Promise} Anzahl der gelöschten Datensätze
      */
     async delete(id) {

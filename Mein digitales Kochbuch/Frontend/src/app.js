@@ -24,16 +24,31 @@ class App {
         this.router = new Router([
             {
                 url: "^/$",
-                show: () => this._gotoList()
+                show: () => this._gotoListR()
+            },{
+                url: "^/editRezept/(.*)$",
+                show: matches => this._gotoEditR(matches[1]),
             },{
                 url: "^/newRezept/$",
-                show: () => this._gotoNew()
+                show: () => this._gotoNewR()
             },{
-                url: "^/edit/(.*)$",
-                show: matches => this._gotoEdit(matches[1]),
+                url: "^/bewertung/$",
+                show: () => this._gotoListB()
+            },{
+                url: "^/editBewertung/(.*)$",
+                show: matches => this._gotoEditB(matches[1]),
+            },{
+                url: "^/newBewertung/$",
+                show: () => this._gotoNewB()
+            },{
+                url: "^/favoriten/$",
+                show: () => this._gotoFavoriten()
+            },{
+                url: "^/einkaufsliste/$",
+                show: () => this._gotoEinkaufsliste()
             },{
                 url: ".*",
-                show: () => this._gotoList()
+                show: () => this._gotoListR()
             },
         ]);
 
@@ -64,54 +79,116 @@ class App {
     /**
      * Übersichtsseite anzeigen. Wird vom Single Page Router aufgerufen.
      */
-    async _gotoList() {
+    async _gotoListR() {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
             let {default: PageList} = await import("./page-list/page-list.js");
 
             let page = new PageList(this);
             await page.init();
-            this._showPage(page, "list");
+            this._showPage(page, "listr");
         } catch (ex) {
             this.showException(ex);
         }
     }
 
     /**
-     * Seite zum Anlegen einer neuen Adresse anzeigen.  Wird vom Single Page
+     * Seite zum Anlegen eines neuen Rezeptes anzeigen.  Wird vom Single Page
      * Router aufgerufen.
      */
-    async _gotoNew() {
+    async _gotoNewR() {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
             let {default: PageEdit} = await import("./page-edit/page-edit.js");
 
             let page = new PageEdit(this);
             await page.init();
-            this._showPage(page, "new");
+            this._showPage(page, "newr");
         } catch (ex) {
             this.showException(ex);
         }
     }
 
     /**
-     * Seite zum Bearbeiten einer Adresse anzeigen.  Wird vom Single Page
+     * Seite zum Bearbeiten eines Rezeptes anzeigen.  Wird vom Single Page
      * Router aufgerufen.
      *
-     * @param {Number} id ID der zu bearbeitenden Adresse
+     * @param {Number} id ID des zu bearbeitenden Rezeptes
      */
-    async _gotoEdit(id) {
+    async _gotoEditR(id) {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
             let {default: PageEdit} = await import("./page-edit/page-edit.js");
 
             let page = new PageEdit(this, id);
             await page.init();
-            this._showPage(page, "edit");
+            this._showPage(page, "editr");
         } catch (ex) {
             this.showException(ex);
         }
     }
+
+    async _gotoListB() {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageBewertung} = await import("./page-bewertung/page-bewertung.js");
+
+            let page = new PageBewertung(this);
+            await page.init();
+            this._showPage(page, "listb");
+        } catch (ex) {
+            this.showException(ex);
+        }
+    }
+    async _gotoEditB(id) {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageBewertungEdit} = await import("./page-bewertung-edit/page-bewertung-edit.js");
+
+            let page = new PageBewertungEdit(this, id);
+            await page.init();
+            this._showPage(page, "editb");
+        } catch (ex) {
+            this.showException(ex);
+        }
+    }
+    async _gotoNewB() {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageBewertungEdit} = await import("./page-bewertung-edit/page-bewertung-edit.js");
+
+            let page = new PageBewertungEdit(this);
+            await page.init();
+            this._showPage(page, "newb");
+        } catch (ex) {
+            this.showException(ex);
+        }
+    }
+    async _gotoFavoriten() {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageFavoriten} = await import("./page-favoriten/page-favoriten.js");
+
+            let page = new PageFavoriten(this);
+            await page.init();
+            this._showPage(page, "favoriten");
+        } catch (ex) {
+            this.showException(ex);
+        }
+    }
+    async _gotoEinkaufsliste() {
+        try {
+            // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
+            let {default: PageEinkaufsliste} = await import("./page-einkaufsliste/page-einkaufsliste.js");
+
+            let page = new PageEinkaufsliste(this);
+            await page.init();
+            this._showPage(page, "einkaufsliste");
+        } catch (ex) {
+            this.showException(ex);
+        }
+    }
+
 
     /**
      * Interne Methode zum Umschalten der sichtbaren Seite.

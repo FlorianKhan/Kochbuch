@@ -1,13 +1,13 @@
 "use strict"
 
-import RezeptService from "../service/einkaufsliste.service.js";
+import EinkaufslisteService from "../service/einkaufsliste.service.js";
 import {wrapHandler} from "../utils.js";
 import RestifyError from "restify-errors";
 
 /**
- * HTTP-Controller-Klasse für Adressbucheinträge. Diese Klasse registriert
+ * HTTP-Controller-Klasse für Einkaufslisten-Einträge. Diese Klasse registriert
  * alle notwendigen URL-Handler beim Webserver für einen einfachen REST-
- * Webservice zum Lesen und Schreiben von Adressen.
+ * Webservice zum Lesen und Schreiben von Einträgen in der Einkaufsliste.
  */
 export default class EinkaufslisteController {
     /**
@@ -20,11 +20,11 @@ export default class EinkaufslisteController {
         this._service = new EinkaufslisteService();
         this._prefix = prefix;
 
-        // Collection: Adressen
+        // Collection: Einkaufsliste
         server.get(prefix, wrapHandler(this, this.search));
         server.post(prefix, wrapHandler(this, this.create));
 
-        // Entity: Adresse
+        // Entity: Einkaufslisten-Eintrag
         server.get(prefix + "/:id", wrapHandler(this, this.read));
         server.del(prefix + "/:id", wrapHandler(this, this.delete));
     }
@@ -47,8 +47,8 @@ export default class EinkaufslisteController {
     }
 
     /**
-     * GET /address
-     * Adressen suchen
+     * GET /einkaufsliste
+     * Einkaufsliste suchen
      */
     async search(req, res, next) {
         let result = await this._service.search(req.query);
@@ -58,11 +58,11 @@ export default class EinkaufslisteController {
     }
 
     /**
-     * POST /address
-     * Neue Adresse anlegen
+     * POST /einkaufsliste
+     * Neuen Eintrag in der Einkaufsliste anlegen
      */
     async create(req, res, next) {
-        let result = await this._service.create(req.body);
+        let result = await this._service.create(req.query);
         this._insertHateoasLinks(result);
 
         res.status(201);
@@ -73,8 +73,8 @@ export default class EinkaufslisteController {
     }
 
     /**
-     * GET /address/:id
-     * Adresse auslesen
+     * GET /einkaufsliste/:id
+     * Speziellen Eintrag in der Einkaufsliste auslesen
      */
     async read(req, res, next) {
         let result = await this._service.read(req.params.id);
@@ -91,8 +91,8 @@ export default class EinkaufslisteController {
 
 
     /**
-     * DELETE /address/:id
-     * Adresse löschen
+     * DELETE /einkaufsliste/:id
+     * Speziellen Eintrag in der Einkaufsliste löschen
      */
     async delete(req, res, next) {
         await this._service.delete(req.params.id)

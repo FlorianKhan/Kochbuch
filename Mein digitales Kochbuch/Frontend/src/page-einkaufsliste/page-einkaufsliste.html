@@ -1,5 +1,94 @@
-<!-- Stylesheet der Seite aus page-list.html kopierbar und anpassen -->
+<!-- Stylesheet der Seite -->
+<style>
+    /* Listeneinträge */
+    main ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
 
-<!-- Inhalt der Seite aus page-list.html kopierbar und anpassen,
-z.B. nur ein Button notwendig (aus Einkaufsliste löschen)
-und nicht alle Informationen des hinzugefügten Rezptes über _id sind notwendig (nur Rezeptname, Zutaten) -->
+    main li {
+        margin: 0;
+        padding: 1em;
+        padding-bottom: 0.5em;
+
+        background-color: rgba(250, 250, 250, .8);
+
+        border: 0px solid lightgrey;
+        border-bottom-width: 1px;
+    }
+
+    main li:hover {
+        background-color: #fafafa;
+    }
+
+    main .rezept {
+        font-size: 120%;
+    }
+    main .rezeptname {
+        font-family: 'Brush Script MT', cursive;
+        font-size: 300%;
+        color: black;
+    }
+     h1 {
+        font-size: 100%;
+     }
+
+    /* Aktionsbuttons */
+    main .actions {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    main .actions > div {
+        padding: 0.5em;
+        margin: 0.5em;
+
+        background-color: #e0e0e0;
+        transition: background-color 0.5s;
+
+        flex: 1;
+        text-align: center;
+    }
+
+    main .actions > div:first-child {
+        margin-left: 0;
+    }
+
+    main .actions > div:last-child {
+        margin-right: 0;
+    }
+
+    main .actions > div:hover {
+        background-color: #f0f0f0;
+        cursor: pointer;
+    }
+</style>
+<!-- Inhalt der Seite -->
+<main>
+    <ol>
+        <!-- Platzhalter für eine leere Liste -->
+        <li class="empty-placeholder">
+            <div class="rezept">
+                Kein Einkauf vorhanden
+            </div>
+        </li>
+
+        <!-- Vorlage für einen Eintrag in der Liste -->
+        <li class="list-entry" data-id="$ID$">
+            <div class="rezeptname">
+                $REZEPTNAME$
+            </div>
+            <h1>Zutaten:</h1>
+            <div class="zutaten">
+                $ZUTATEN$
+            </div>
+            <!-- Button: Lösche von Einkaufsliste -->
+            <div class="actions">
+                <div class="action deleteEinkaufsliste">
+                    <a>️Lösche von der Einkaufsliste</a>
+                </div>
+            </div>
+        </li>
+    </ol>
+</main>

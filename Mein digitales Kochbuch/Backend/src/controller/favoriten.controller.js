@@ -1,13 +1,13 @@
 "use strict"
 
-import RezeptService from "../service/favoriten.service.js";
+import FavoritenService from "../service/favoriten.service.js";
 import {wrapHandler} from "../utils.js";
 import RestifyError from "restify-errors";
 
 /**
- * HTTP-Controller-Klasse für Adressbucheinträge. Diese Klasse registriert
+ * HTTP-Controller-Klasse für Favoriteneinträge. Diese Klasse registriert
  * alle notwendigen URL-Handler beim Webserver für einen einfachen REST-
- * Webservice zum Lesen und Schreiben von Adressen.
+ * Webservice zum Lesen und Schreiben von Favoriten.
  */
 export default class FavoritenController {
     /**
@@ -20,11 +20,11 @@ export default class FavoritenController {
         this._service = new FavoritenService();
         this._prefix = prefix;
 
-        // Collection: Adressen
+        // Collection: Favoriten
         server.get(prefix, wrapHandler(this, this.search));
         server.post(prefix, wrapHandler(this, this.create));
 
-        // Entity: Adresse
+        // Entity: Favorit
         server.get(prefix + "/:id", wrapHandler(this, this.read));
         server.del(prefix + "/:id", wrapHandler(this, this.delete));
     }
@@ -47,8 +47,8 @@ export default class FavoritenController {
     }
 
     /**
-     * GET /address
-     * Adressen suchen
+     * GET /favoriten
+     * Favoriten suchen
      */
     async search(req, res, next) {
         let result = await this._service.search(req.query);
@@ -58,8 +58,8 @@ export default class FavoritenController {
     }
 
     /**
-     * POST /address
-     * Neue Adresse anlegen
+     * POST /favoriten
+     * Neuen Favorit anlegen
      */
     async create(req, res, next) {
         let result = await this._service.create(req.body);
@@ -73,8 +73,8 @@ export default class FavoritenController {
     }
 
     /**
-     * GET /address/:id
-     * Adresse auslesen
+     * GET /favoriten/:id
+     * Speziellen Favoriten auslesen
      */
     async read(req, res, next) {
         let result = await this._service.read(req.params.id);
@@ -90,8 +90,8 @@ export default class FavoritenController {
     }
 
     /**
-     * DELETE /address/:id
-     * Adresse löschen
+     * DELETE /favoriten/:id
+     * Speziellen Favorit löschen
      */
     async delete(req, res, next) {
         await this._service.delete(req.params.id)

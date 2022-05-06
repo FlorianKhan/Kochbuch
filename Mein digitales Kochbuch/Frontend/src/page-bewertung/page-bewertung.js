@@ -1,50 +1,25 @@
-// wilde Kopie (erstmal nur + Konstruktor für ID des Rezeptes)
-
 "use strict";
 
 import Page from "../page.js";
 import HtmlTemplate from "./page-bewertung.html";
 
 /**
-* Klasse PageBewertung: stellt die Listenübersicht zur Verfügung
-
- * Klasse PageList: Stellt die Listenübersicht zur Verfügung
+ * Klasse PageBewertung stellt die Listenübersicht der Bewertungen
+ * zur Verfügung
  */
+
 export default class PageBewertung extends Page {
+
     /**
      * Konstruktor.
      *
      * @param {App} app Instanz der App-Klasse
-     * für die ID der Klasse -> Bewertung wird von diser verwendet
-     * @param {Integer} editId ID des bearbeiteten Datensatzes (nicht bearbeiteten sondern des Rezeptes)
      */
-    //constructor(app) {
-    //    super(app, HtmlTemplate);
 
-    //    this._emptyMessageElement = null;
-    //}
-
-// Konstruktor von edit --> damit ich die ID des Rezeptes habe (vom Prinzip wird nur die ID benötigt alle andern Daten sind mir egal)
-    constructor(app, editId) {
+    constructor(app) {
         super(app, HtmlTemplate);
 
-        // Bearbeiteter Datensatz
-        this._editId = editId;
-
-        //this._dataset = {
-        //    rezeptname: "",
-        //    dauer: "",
-        //    schwierigkeitsgrad: "",
-        //    zutaten: "",
-        //    zubereitung: "",
-        //};
-        //
-        // Eingabefelder
-        //this._rezeptnameInput = null;
-        //this._dauerInput  = null;
-        //this._schwierigkeitsgradInput     = null;
-        //this._zutatenInput     = null;
-        //this._zubereitungInput     = null;
+        this._emptyMessageElement = null;
     }
 
     /**
@@ -57,45 +32,40 @@ export default class PageBewertung extends Page {
      * `this._mainElement` nachbearbeitet werden, um die angezeigten Inhalte
      * zu beeinflussen.
      */
-    async init() {
-        // HTML-Inhalt nachladen
-        await super.init();
-        this._title = "Übersicht";
 
-        // Wenn keine Daten vorhanden sind, werden keine Platzhalter angezeigt (auskommenteieren)
-        //let data = await this._app.backend.fetch("GET", "/rezept");
-        //let data = await this._app.backend.fetch("GET", "/bewertung");
+     async init() {
 
-        //Keine Daten --> eigener Platzhalter wird angezeigt
-        this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholderBewertung");
+         // HTML-Inhalt nachladen
+         await super.init();
+         this._title = "Bewertung Übersicht";
 
-        //wenn es Eöemente gibt wird dieser nicht angezeigt
-        if (data.length) {
-            this._emptyMessageElement.classList.add("hidden");
-        }
+         // Platzhalter anzeigen, wenn noch keine Daten vorhanden sind
+         let data = await this._app.backend.fetch("GET", "/bewertung");
+         this._emptyMessageElement = this._mainElement.querySelector(".empty-placeholder");
 
-//Verweis auf die Klasse list... aus HTML --> mit Feldern
-        // Je Datensatz einen Listeneintrag generieren
-        let olElement = this._mainElement.querySelector("ol");
+         if (data.length) {
+             this._emptyMessageElement.classList.add("hidden");
+         }
 
-        let templateElement = this._mainElement.querySelector(".list-entryBewertung");
-        let templateHtml = templateElement.outerHTML;
-        templateElement.remove();
+         // Je Datensatz einen Listeneintrag generieren
+         let olElement = this._mainElement.querySelector("ol");
 
-        for (let index in data) {
-            // Platzhalter ersetzen
-            let dataset = data[index];
-            let html = templateHtml;
+         let templateElement = this._mainElement.querySelector(".list-entry");
+         let templateHtml = templateElement.outerHTML;
+         templateElement.remove();
 
-//eigene ID (pagebewertung ID) und Rezept ID (pageList ID)      --> zuordung
+         for (let index in data) {
+           
+             // Platzhalter ersetzen
+             let dataset = data[index];
+             let html = templateHtml;
 
-            //Daten
-            html = html.replace("$ID$", dataset._id); //meine eigene ID
+            html = html.replace("$ID$", dataset._id);
+            html = html.replace("$REZEPTNAME$", dataset.rezeptname);
             html = html.replace("$BEWERTUNGSTITEL$", dataset.bewertungstitel);
             html = html.replace("$BEPUNKTUNG$", "Bepunktung: " + dataset.bepunktung);
             html = html.replace("$BEWERTUNGSTEXT$", dataset.bewertungstext);
 
-//harte Kopie
             // Element in die Liste einfügen
             let dummyElement = document.createElement("div");
             dummyElement.innerHTML = html;
@@ -103,14 +73,11 @@ export default class PageBewertung extends Page {
             liElement.remove();
             olElement.appendChild(liElement);
 
-
-// Event Handler (bearbeiten und löschen)
-
-
-            // Event Handler registrieren
-            liElement.querySelector(".action.editBewertung").addEventListener("click", () => location.hash = `#/bewertungEdit/${dataset._id}`);
+            // Event Handler registrieren (Funktionen bearbeiten und löschen)
+            liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/editBewertung/${dataset._id}`);
             // Löschen der datenset._id --> somit nicht das Rezept
-            liElement.querySelector(".action.deleteBewertung").addEventListener("click", () => this._askDelete(dataset._id));
+            liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
+
         }
     }
 
@@ -118,16 +85,16 @@ export default class PageBewertung extends Page {
      * Löschen der übergebenen Bewertung. Zeigt einen Popup, ob der Anwender
      * die Bewertung löschen will und löscht diese dann.
      *
-     * @param {Integer} id ID des zu löschenden Datensatzes (der Bwertung)
+     * @param {Integer} id ID des zu löschenden Datensatzes
      */
+
     async _askDelete(id) {
+
         // Sicherheitsfrage zeigen
         let answer = confirm("Soll die ausgewählte Bewertung wirklich gelöscht werden?");
         if (!answer) return;
 
         // Datensatz löschen
-
-//kontrollieren??     /bewertung
         try {
             this._app.backend.fetch("DELETE", `/bewertung/${id}`);
         } catch (ex) {
@@ -143,6 +110,7 @@ export default class PageBewertung extends Page {
         } else {
             this._emptyMessageElement.classList.remove("hidden");
         }
+
     }
 
 };

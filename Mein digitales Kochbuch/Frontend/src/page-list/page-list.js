@@ -4,7 +4,7 @@ import Page from "../page.js";
 import HtmlTemplate from "./page-list.html";
 
 /**
- * Klasse PageList: Stellt die Listenübersicht zur Verfügung
+ * Klasse PageList: Stellt die Listenübersicht der Rezepte zur Verfügung
  */
 export default class PageList extends Page {
     /**
@@ -73,21 +73,21 @@ export default class PageList extends Page {
 
             // Bewertung Handler (beim Klick auf diesen Button muss auf die Seite Bewertungen gewechselt wwerden)
             //liElement.querySelector(".action.bewertung").addEventListener("click", () => location.hash = `#/bewertungen`);
-            //liElement.querySelector(".action.bewerten").addEventListener("click", () => location.hash = `#/newBewertung/${PageBewertung.dataset._id}`);
+            liElement.querySelector(".action.bewerten").addEventListener("click", () => location.hash = `#/newBewertung/`);
 
             // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Favoritenliste
-            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalt Favoritenliste möglich machen)
-            //liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset._id));
+            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalb Favoritenliste möglich machen)
+            liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset._id));
 
             // Einkaufsliste Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Einkaufsliste
-            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalt Einkaufsliste möglich machen)
-            //liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset._id));
+            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalb Einkaufsliste möglich machen)
+            liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset._id));
         }
     }
 
     /**
-     * Löschen der übergebenen Adresse. Zeigt einen Popup, ob der Anwender
-     * die Adresse löschen will und löscht diese dann.
+     * Löschen der übergebenen Rezepte. Zeigt einen Popup, ob der Anwender
+     * das Rezept löschen will und löscht dieses dann.
      *
      * @param {Integer} id ID des zu löschenden Datensatzes
      */
@@ -115,14 +115,30 @@ export default class PageList extends Page {
     }
         //Favorit-Methoden (Kopie ausprogrammieren)
 
-    //async _hinzufügenFavorit(id) {
-    //    try {
-    //        this._app.backend.fetch("ADD", `/favoriten`);
-    //    } catch (ex) {
-    //        this._app.showException(ex);
-    //        return;
-    //    }
-    //}
+    async _hinzufügenFavorit(id) {
+        let answer = confirm("Soll das ausgewählte Rezept wirklich zu Favoriten hinzugefügt werden?");
+        if (!answer) return;
+
+        try {
+            this._app.backend.fetch("POST", `/favoriten`);
+        } catch (ex) {
+            this._app.showException(ex);
+            return;
+        }
+        this._mainElement.querySelector(`[data-id="${id}"]`)?.createElement();
+
+    }
 
         //Einkaufsliste-Methode (Kopie ausprogrammieren)
+    async _hinzufügenEinkaufsliste(id) {
+        let answer = confirm("Soll das ausgewählte Rezept wirklich zur Einkaufsliste hinzugefügt werden?");
+        if (!answer) return;
+        try {
+            this._app.backend.fetch("POST", `/einkaufsliste?id=` + id);
+        } catch (ex) {
+            this._app.showException(ex);
+            return;
+        }
+        this._mainElement.querySelector(`[data-id="${id}"]`)?.createElement();
+    }
 };
