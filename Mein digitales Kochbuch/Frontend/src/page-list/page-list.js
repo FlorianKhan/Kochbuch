@@ -86,6 +86,35 @@ export default class PageList extends Page {
         }
     }
 
+    /**
+    * Löschen eines Rezepts. Zeigt einen Popup, ob der Anwender
+    * das Rezept löschen will und löscht dieses dann.
+    *
+    * @param {Integer} id ID des zu löschenden Datensatzes
+    */
+    async _askDelete(id) {
+
+      // Sicherheitsfrage zeigen
+      let answer = confirm("Soll das ausgewählte Rezept wirklich gelöscht werden?");
+      if (!answer) return;
+
+      // Datensatz löschen
+      try {
+        this._app.backend.fetch("DELETE", `/rezept/${id}`);
+      } catch (ex) {
+        this._app.showException(ex);
+        return;
+      }
+      
+      // HTML-Element entfernen
+      this._mainElement.querySelector(`[data-id="${id}"]`)?.remove();
+
+      if (this._mainElement.querySelector("[data-id]")) {
+        this._emptyMessageElement.classList.add("hidden");
+      } else {
+        this._emptyMessageElement.classList.remove("hidden");
+      }
+    }
 
     /**
     * Hinzufügen von Favoriten. Zeigt einen Popup, ob der Anwender
@@ -103,7 +132,7 @@ export default class PageList extends Page {
 
         // Datensatz speichern
         try {
-            await this._app.backend.fetch("POST", this._url, {body: favoriten});
+            await this._app.backend.fetch("POST", "/favoriten", {body: favoriten});
         } catch (ex) {
             this._app.showException(ex);
             return;
@@ -122,6 +151,7 @@ export default class PageList extends Page {
     async _hinzufügenEinkaufsliste(dataset) {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zur Einkaufsliste hinzugefügt werden?");
         if (!answer) return;
+
         // Eingegebene Werte prüfen
         let einkaufsliste = {
             rezeptname: dataset.rezeptname,
@@ -130,7 +160,7 @@ export default class PageList extends Page {
 
         // Datensatz speichern
         try {
-            await this._app.backend.fetch("POST", this._url, {body: einkaufsliste});
+            await this._app.backend.fetch("POST", "/einkaufsliste", {body: einkaufsliste});
         } catch (ex) {
             this._app.showException(ex);
             return;
