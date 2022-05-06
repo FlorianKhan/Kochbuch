@@ -1,5 +1,5 @@
-SPA/REST-Vorlage: Frontend
-==========================
+Kochbuch: Frontend
+====================
 
 Inhaltsverzeichnis
 ------------------
@@ -13,7 +13,7 @@ Inhaltsverzeichnis
 1. Kurzbeschreibung
 ----------------
 
-Dies ist die clientseitige Single Page App mit dem Frontend des Beispiels.
+Dies ist die clientseitige Single Page App mit dem Frontend des Kochbuchs.
 Es handelt sich dabei um eine einfache Webanwendung, die mit VanillaJS
 (also einfachem JavaScript) ohne zusätzlichem Framework realisiert wurde.
 
@@ -63,8 +63,8 @@ folgenden Befehlen ein Docker-Container mit Node.js gestartet werden. In diesem
 können die oben gezeigten Befehle dann alternativ ausgeführt werden:
 
 ```sh
-docker network create examplenet
-docker run -it --net examplenet -p 8080:8080 -w /app -v "$(pwd):/app" node:17-alpine sh
+docker network create meindigitaleskochbuch
+docker run -it --net meindigitaleskochbuch -p 8080:8080 -w /app -v "$(pwd):/app" node:17-alpine sh
 ```
 
 Der erste Befehl muss dabei nur einmalig ausgeführt werden, um ein virtuelles
@@ -73,16 +73,16 @@ genommen wird dieses für das Frontend nicht benötigt. Backend und Datenbank
 brauchen es aber, um miteinander "reden" zu können. Der zweite Befehl startet
 den Docker-Container mit Node.js. Seine Parameter haben folgende Bedeutung:
 
-  | Parameter          | Bedeutung                                                     |
-  | ------------------ | ------------------------------------------------------------- |
-  | `run`              | Es soll ein Docker-Container ausgeführt werden                |
-  | `-it`              | Start im Vordergrund mit interaktivem Terminal                |
-  | `--net examplenet` | Container mit dem virtuellen Netzwerk `examplenet` verbinden  |
-  | `-p 8080:8080`     | `localhost:8080` an den Port 8080 des Containers weiterleiten |
-  | `-w /app`          | Arbeitsverzeichnis `/app` im Container benutzen               |
-  | `-v "$(pwd):/app"` | Das aktuelle Verzeichnis unter `/app` im Container einbinden  |
-  | `node:17-alpine`   | Name des auszuführenden Container-Images (hier Node.js 17)    |
-  | `sh`               | Start einer interaktiven Shell im Container                   |
+  | Parameter                     | Bedeutung                                                                |
+  | ------------------------------| -------------------------------------------------------------------------|
+  | `run`                         | Es soll ein Docker-Container ausgeführt werden                           |
+  | `-it`                         | Start im Vordergrund mit interaktivem Terminal                           |
+  | `--net meindigitaleskochbuch` | Container mit dem virtuellen Netzwerk `meindigitaleskochbuch` verbinden  |
+  | `-p 8080:8080`                | `localhost:8080` an den Port 8080 des Containers weiterleiten            |
+  | `-w /app`                     | Arbeitsverzeichnis `/app` im Container benutzen                          |
+  | `-v "$(pwd):/app"`            | Das aktuelle Verzeichnis unter `/app` im Container einbinden             |
+  | `node:17-alpine`              | Name des auszuführenden Container-Images (hier Node.js 17)               |
+  | `sh`                          | Start einer interaktiven Shell im Container                              |
 
 Innerhalb des Containers wird eine interaktive Shell zur Ausführung der oben
 beschriebenen Befehle gestartet. Dabei muss beachtet werden, dass man sich hier
@@ -112,8 +112,8 @@ Für den Produktivbetrieb konfiguriert das beigefügte `Dockerfile` einen
 für Containervirtualisierung ausgeführt werden kann. Folgende Befehle werden
 hierfür benötigt:
 
- * `docker build -t example-frontend .` zum Bauen des Containers
- * `docker run -d -p 8080:80 --net examplenet --name frontend example-frontend` zum Ausführen des Containers
+ * `docker build -t meindigitaleskochbuch-frontend .` zum Bauen des Containers
+ * `docker run -d -p 8080:80 --net meindigitaleskochbuch --name frontend meindigitaleskochbuch-frontend` zum Ausführen des Containers
  * `docker container stop frontend` zum Stoppen des Containers
  * `docker system prune` zum Aufräumen nicht mehr benötigter Daten
 
