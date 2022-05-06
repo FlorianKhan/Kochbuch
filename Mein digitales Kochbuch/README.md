@@ -1,46 +1,46 @@
-Grundgerüst: SPA mit REST-Backend
-=================================
-
-__TODO: Dokument überarbeiten__
+Beispielanwendung „Kochbuch”
+==============================
 
 Inhaltsverzeichnis
 ------------------
 
  1. [Kurzbeschreibung](#kurzbeschreibung)
- 1. [Nutzung der Gitpod Online-IDE](#nutzung-der-gitpod-online-ide)
- 1. [Start mit Docker Compose](#start-mit-docker-compose)
- 1. [Start einzelner Services mit und ohne Docker](#start-einzelner-services-mit-und-ohne-docker)
- 1. [Hinwes zu Podman unter Linux](#hinweis-zu-podman-unter-linux)
+ 2. [Nutzung der Gitpod Online-IDE](#nutzung-der-gitpod-online-ide)
+ 3. [Start mit Docker Compose](#start-mit-docker-compose)
+ 4. [Start einzelner Services mit und ohne Docker](#start-einzelner-services-mit-und-ohne-docker)
+ 5. [Hinwes zu Podman unter Linux](#hinweis-zu-podman-unter-linux)
 
-Kurzbeschreibung
+1. Kurzbeschreibung
 ----------------
 
-Bei diesem Projekt handelt es sich um eine vom Adressbuchbeispiel abgeleitete
-Vorlage, die Sie zur Erstellung eigener Single Page Apps mit REST-Backend
-verwenden können. Im Gegensatz zum Original werden hier nicht Adressen sondern
-Beispiele verwaltet. :-) Zum Übernehmen gehen Sie wie folgt vor:
+Bei dieser Anwendung handelt es sich um ein Kochbuch auf Vorlage des
+im 3. Semester in der Vorlesung "Webprogrammierung" behandelten "Adressbuch".
+Hier wird eine Single Page App zur Verwaltung von Rezeptdatensätzen
+implementiert, die folgende Entitäten beinhaltet:
 
- 1. Kopieren Sie den Inhalt dieses Verzeichnisses in ein neues Verzeichnis
-    für die zu erstellende App (außerhalb dieses Git-Repositories)
+  1. Rezepte:
+        Eine Auflistung aller Rezepte in diesem Kochbuch. Es können neue Rezepte erstellt,
+        vorhandene bearbeitet und gelöscht werden.
+  2. Bewertungen zu den Rezepten:
+        Möglichkeit, jedes Rezept anhand von Sternen zu beurteilen und einen Kommentar abzugeben.
+        Diese Bewertung lässt sich bei Bedarf auch ändern und löschen.
+  3. Favoritenliste:
+        Möglichkeit, bestimmte Lieblingsrezepte zu den Favoriten hinzuzufügen.
+        Favoriten können im Nachhinein wieder von der Liste entfernt werden.
+  4. Einkaufsliste:
+        Besteht der Wunsch einen bestimmtes Rezept nachzukochen, können dessen Zutaten
+        auf die Einkaufsliste gesetzt und später wieder entfernt werden.
 
- 1. Kopieren Sie die Datei `.gitignore` aus dem Wurzelverzeichnis dieses
-    Git-Repositories in das eben kopierte Verzeichnis.
-
- 1. Legen Sie ein neues Git-Repository an und commited Sie den kopierten
-    Quellcode. Bei Bedarf laden Sie das Repository auf GitHub hoch.
-
- 1. Lesen Sie sich die README-Dateien, den Quellcode und die darin enthaltenen
-    Kommentare sorgfältig durch.
-
- 1. Suchen Sie mit Ihrem Editor nach allen Vorkommen des Worts TODO im
-    gesamten Quellverzeichnis, um die anzupassenden Stellen zu ermitteln.
-
- 1. Passen Sie die README-Dateien an oder ersetzen diese durch eigene Dateien.
+Diese Version beinhaltet jedoch neben der Benutzeroberfläche auch ein vollständiges
+REST-Backend zur Ablage der Rezepte in einer zentralen Datenbank und auch die
+Struktur des Quellcodes folgt eher modernen Best Practices wie der Nutzung von
+npm zur Verwaltung von Abhängigkeiten und der Nutzung eines Bundlers, um diese
+dem Browser zugänglich zu machen.
 
 Mit Docker und Docker Compose können die Bestandteile der App einzeln oder
 als Gesamtprojekt ausgeführt werden.
 
-Nutzung der Gitpod Online-IDE
+2. Nutzung der Gitpod Online-IDE
 ----------------------------
 
 Falls Sie auf Ihrem Rechner gar keine Software installieren können oder die
@@ -51,10 +51,10 @@ mit vorinstallierten Werkzeugen für Docker und Node.js zur Verfügung, so dass
 Sie alle hier gezeigten Befehle direkt ausführen können. Gehen Sie hierfür
 wie folgt vor:
 
- 1. Importieren Sie den Quellcode in ein neues Git-Repository.
- 1. Laden Sie das Git-Repository auf GitHub hoch und machen es public.
- 1. Rufen Sie die Startseite des Git-Repositories in GitHub auf.
- 1. Schreiben Sie `https://gitpod.io/#` vor die GitHub-URL, um die IDE zu starten.
+   1. Importieren Sie den Quellcode in ein neues Git-Repository.
+   2. Laden Sie das Git-Repository auf GitHub hoch und machen es public.
+   3. Rufen Sie die Startseite des Git-Repositories in GitHub auf.
+   4. Schreiben Sie `https://gitpod.io/#` vor die GitHub-URL, um die IDE zu starten.
 
 Innerhalb der Online-IDE können Sie über das Menü ein neues Terminal öffnen,
 in dem alle Befehle ausgeführt werden können. Dabei müssen Sie lediglich
@@ -81,7 +81,7 @@ export API_URL=https://3000-….gitpod.io
 
 Anschließend sollte alles wie es soll funktionieren.
 
-Start mit Docker Compose
+3. Start mit Docker Compose
 ------------------------
 
 Das Wurzelverzeichnis beinhaltet zwei Docker Compose Files, mit denen die
@@ -164,7 +164,7 @@ App unverändert auch mit Docker Swarm ausführen, dies wird hier allerdings
 absichtlicht nicht beschrieben, da es auf Docker Compose aufbaut und Docker
 Compose davon abgesehen für uns zunächst ausreicht.
 
-Start einzelner Services mit und ohne Docker
+4. Start einzelner Services mit und ohne Docker
 --------------------------------------------
 
 Die README-Dateien in den jeweiligen Unterverzeichnissen beschrieben, wie die
@@ -173,7 +173,7 @@ um diese in Isolation zu testen. In der Regel ist jedoch einfacher, mit Docker
 Compose eine komplette Entwicklungsumgebung zu starten und darauf los zu
 programmieren.
 
-Hinweis zu Podman unter Linux
+5. Hinweis zu Podman unter Linux
 -----------------------------
 
 Unter Linux hat sich inzwischen Podman als verbreitete Alternative zu Docker
