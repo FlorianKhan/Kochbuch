@@ -3,9 +3,12 @@ Gruppenarbeit: Verteilte Systeme
 Gruppenmitglieder: Angelika Kleimann, Rebecca Piotrowski, Marco Pelzer, Florian Khan
 Github-Link: www.github.com/FlorianKhan/Kochbuch
 
-Geplanter Funktionsumfang:
-- neue Rezepte hinzufügen (inkl. Frontend)
-- Rezepte löschen (inkl. Frontend)
-- Rezepte bearbeiten (inkl. Frontend)
-- Rezepte bewerten (inkl. Frontend)
-(- Zutatenmenge an gewünschte Personenanzahl anpassen)
+Umgesetzter Funktionsumfang
+- Rezepte hinzufügen
+- Rezepte löschen
+- Rezepte bearbeiten
+- Rezepte bewerten
+- Rezepte auf eine Favoritenliste hinzufügen
+- Rezepte von der Favoritenliste löschen
+- Rezepte auf die Einkaufsliste hinzufügen
+- Rezepte von der Einkaufsliste löschen
