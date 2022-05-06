@@ -45,7 +45,7 @@ class DatabaseFactory {
                 {
                     rezeptname: "Apfelkuchen",
                     dauer: "80min",
-                    schwierigkeitsgrad: "7",
+                    schwierigkeitsgrad: "5",
                     zutaten: "<p> - 250g Mehl <br /> \ - 1000g Äpfel <br /> \ - 400l Milch <br /> \ - 150g Zucker</p>",
                     zubereitung:"Mehl mit Milch und Zucker verühren. Und so weiter. Test."
                 },
