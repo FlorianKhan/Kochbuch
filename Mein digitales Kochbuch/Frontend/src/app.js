@@ -128,12 +128,12 @@ class App {
         }
     }
 
-    async _gotoListB(id) {
+    async _gotoListB() {
         try {
             // Dynamischer Import, vgl. https://javascript.info/modules-dynamic-imports
             let {default: PageBewertung} = await import("./page-bewertung/page-bewertung.js");
 
-            let page = new PageBewertung(this, id);
+            let page = new PageBewertung(this);
             await page.init();
             this._showPage(page, "listb");
         } catch (ex) {

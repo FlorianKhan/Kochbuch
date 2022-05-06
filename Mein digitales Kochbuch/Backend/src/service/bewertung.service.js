@@ -8,10 +8,13 @@ import {ObjectId} from "mongodb";
  * eigentliche Anwendungslogik losgelöst vom technischen Übertragungsweg.
  * Die Bewertungen werden der Einfachheit halber in einer MongoDB abgelegt.
  */
+
 export default class BewertungService {
+
     /**
      * Konstruktor.
      */
+
     constructor() {
         this._bewertungen = DatabaseFactory.database.collection("bewertungen");
     }
@@ -25,6 +28,7 @@ export default class BewertungService {
      * @param {Object} query Optionale Suchparameter
      * @return {Promise} Liste der gefundenen Bewertungen
      */
+
     async search(query) {
         let cursor = this._bewertungen.find(query, {
             sort: {
@@ -41,14 +45,15 @@ export default class BewertungService {
      * @param {Object} rezept Zu speichernde Bewertungsdaten
      * @return {Promise} Gespeicherte Bewertungsdaten
      */
+
     async create(bewertung) {
         bewertung = bewertung || {};
 
         let newBewertung = {
-            rezeptname:               bewertung.rezeptname         || "",
+            rezeptname:               bewertung.rezeptname              || "",
             bewertungstitel:          bewertung.bewertungstitel         || "",
             bepunktung:               bewertung.bepunktung              || "",
-            bewertungstext:           bewertung.bewertungstext         || ""
+            bewertungstext:           bewertung.bewertungstext          || ""
         };
 
         let result = await this._bewertungen.insertOne(newBewertung);
@@ -61,6 +66,7 @@ export default class BewertungService {
      * @param {String} id ID der gesuchten Bewertung
      * @return {Promise} Gefundene Bewertungsdaten
      */
+
     async read(id) {
         let result = await this._bewertungen.findOne({_id: new ObjectId(id)});
         return result;
@@ -74,6 +80,7 @@ export default class BewertungService {
      * @param {[type]} rezept Zu speichernde Bewertungsdaten
      * @return {Promise} Gespeicherte Bewertungsdaten oder undefined
      */
+
     async update(id, bewertung) {
         let oldBewertung = await this._bewertungen.findOne({_id: new ObjectId(id)});
         if (!oldBewertung) return;
@@ -97,6 +104,7 @@ export default class BewertungService {
      * @param {String} id ID der gesuchten Bewertung
      * @return {Promise} Anzahl der gelöschten Datensätze
      */
+
     async delete(id) {
         let result = await this._bewertungen.deleteOne({_id: new ObjectId(id)});
         return result.deletedCount;

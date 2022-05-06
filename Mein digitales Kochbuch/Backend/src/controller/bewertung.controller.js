@@ -9,13 +9,16 @@ import RestifyError from "restify-errors";
  * alle notwendigen URL-Handler beim Webserver für einen einfachen REST-
  * Webservice zum Lesen und Schreiben von Bewertungen.
  */
+
 export default class BewertungController {
+
     /**
      * Konstruktor. Hier werden die URL-Handler registrert.
      *
      * @param {Object} server Restify Serverinstanz
      * @param {String} prefix Gemeinsamer Prefix aller URLs
      */
+
     constructor(server, prefix) {
         this._service = new BewertungService();
         this._prefix = prefix;

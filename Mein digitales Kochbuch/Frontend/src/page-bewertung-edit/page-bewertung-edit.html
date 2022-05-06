@@ -1,5 +1,7 @@
 <!-- Stylesheet der Seite -->
+
 <style>
+
     /* FORMULARFELDER */
     main {
         background-color: white;
@@ -10,11 +12,14 @@
         display: block;
         width: 100%;
 
+        background-color: rgba(250, 250, 250, .8);
+
         border: 0px solid lightgrey;
         border-bottom-width: 1px;
 
         padding: 0.5em 0 0.5em 0;
         margin-bottom: 1em;
+        size: 12pt;
     }
 
     /* AKTIONSBUTTONS */
@@ -46,30 +51,32 @@
         background-color: #f0f0f0;
         cursor: pointer;
     }
+
 </style>
 
 <!-- Inhalt der Seite -->
 <main>
     <div>
-      <!-- Eingabefelder/Bearbeitungsfelder -->
         <div class="form">
+
             <input class="rezeptname" placeholder="Rezeptname" value="$REZEPTNAME$" />
             <input class="bewertungstitel" placeholder="Bewertungstitel" value="$BEWERTUNGSTITEL$" />
             <input class="bepunktung" placeholder="Bepunktung" value="$BEPUNKTUNG$" type="search" list="mylistBepunktung"/>
 
             <!-- Drop-Down-Menü zur Bepunktung -->
             <datalist id="mylistBepunktung">
-                <option value="1 Stern">
-                <option value="2 Sterne">
-                <option value="3 Sterne">
-                <option value="4 Sterne">
-                <option value="5 Sterne">
+                <option value="⭐️">
+                <option value="⭐️⭐️">
+                <option value="⭐️⭐️⭐️">
+                <option value="⭐️⭐️⭐️⭐️">
+                <option value="⭐️⭐️⭐️⭐️⭐️">
             </datalist>
 
             <input class="bewertungstext" placeholder="Bewertungstext" value="$BEWERTUNGSTEXT$" />
+            
         </div>
 
-<!-- Funktion speichern -->
+        <!-- Funktion speichern -->
         <div class="actions">
             <div class="action save">
                 <a>💾</a>

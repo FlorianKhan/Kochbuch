@@ -52,6 +52,24 @@ class DatabaseFactory {
                 },
             ]);
         }
+        let bewertungen = this.database.collection("bewertungen");
+
+        if (await bewertungen.estimatedDocumentCount() === 0) {
+            bewertungen.insertMany([
+                {
+                    rezeptname: "Erdbeerkuchen",
+                    bewertungstitel: "Super lecker...",
+                    bepunktung: "⭐️⭐️⭐️⭐️⭐️",
+                    bewertungstext: "Ich habe noch nie einen so tollen Kuchen gegessen. Zu empfehlen!"
+                },
+                {
+                    rezeptname: "Apfelkuchenkuchen",
+                    bewertungstitel: "Nicht so meins!",
+                    bepunktung: "⭐️⭐️",
+                    bewertungstext: "Finde ich ein wenig matschig. Geschmackssache."
+                },
+            ]);
+        }
     }
 }
 
