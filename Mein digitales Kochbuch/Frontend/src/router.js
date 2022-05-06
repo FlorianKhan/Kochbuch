@@ -11,6 +11,7 @@
  * URL sowie eine Funktion zur Anzeige des dazugehörigen Inhalts besitzen.
  */
 export default class Router {
+
     /**
      * Konstruktor. Im Parameter routes muss eine Liste mit den vorhandenen
      * URL-Routen der App übergeben werden. Die Liste muss folgendes Format
@@ -32,7 +33,6 @@ export default class Router {
     constructor(routes) {
         this._routes = routes;
         this._started = false;
-
         window.addEventListener("hashchange", () => this._handleRouting());
     }
 
