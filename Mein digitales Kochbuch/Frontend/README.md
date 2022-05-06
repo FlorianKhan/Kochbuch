@@ -5,19 +5,19 @@ Inhaltsverzeichnis
 ------------------
 
  1. [Kurzbeschreibung](#kurzbeschreibung)
- 1. [Start mit Docker Compose](#start-mit-docker-compose)
- 1. [Node.js-Kommandozeilenbefehle](#nodejs-kommandozeilenbefehle)
- 1. [Node.js in Docker ausführen](#nodejs-in-docker-ausführen)
- 1. [Produktives Container Image bauen](#produktives-container-image-bauen)
+ 2. [Start mit Docker Compose](#start-mit-docker-compose)
+ 3. [Node.js-Kommandozeilenbefehle](#nodejs-kommandozeilenbefehle)
+ 4. [Node.js in Docker ausführen](#nodejs-in-docker-ausführen)
+ 5. [Produktives Container Image bauen](#produktives-container-image-bauen)
 
-Kurzbeschreibung
+1. Kurzbeschreibung
 ----------------
 
 Dies ist die clientseitige Single Page App mit dem Frontend des Beispiels.
 Es handelt sich dabei um eine einfache Webanwendung, die mit VanillaJS
 (also einfachem JavaScript) ohne zusätzlichem Framework realisiert wurde.
 
-Start mit Docker Compose
+2. Start mit Docker Compose
 ------------------------
 
 Am einfachsten lässt sich die App mit Docker Compose aus dem Wurzelverzeichnis
@@ -32,7 +32,7 @@ Die nachfolgenden Abschnitte in dieser Datei beschreiben hingegen, was dabei im
 Hintergrund passiert bzw. wie das Frontend mit und ohne Docker isoliert gestartet
 werden kann.
 
-Node.js-Kommandozeilenbefehle
+3. Node.js-Kommandozeilenbefehle
 -----------------------------
 
 Diese App nutzt Node.js und den esbuild-Bundler zur Verwaltung von Abhängigkeiten
@@ -55,7 +55,7 @@ und kann von dort auf einen beliebigen Webserver hochgeladen werden. Insbesonder
 des Container Images ausgeführt. In der `../docker-compose.dev.yml` werden
 hingegen die Befehle `npm install` und `npm start` ausgeführt.
 
-Node.js in Docker ausführen
+4. Node.js in Docker ausführen
 ---------------------------
 
 Falls Node.js auf dem eigenen Rechner nicht lokal installiert wurde, kann mit
@@ -104,7 +104,7 @@ Für weitere Informationen siehe
 Dort findet sich ein ausführliches Tutorial zur Nutzung von Docker während der
 Entwicklung, das auch die Grundlage für diese Beschreibung bildet.
 
-Produktives Container-Image bauen
+5. Produktives Container-Image bauen
 ---------------------------------
 
 Für den Produktivbetrieb konfiguriert das beigefügte `Dockerfile` einen
