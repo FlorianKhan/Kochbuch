@@ -2,7 +2,6 @@
 
 import Page from "../page.js";
 import HtmlTemplate from "./page-list.html";
-import PageEinkaufsliste from "../page-einkaufsliste/page-einkaufsliste.js";
 
 /**
 * Klasse PageList: Stellt die Listenübersicht der Rezepte zur Verfügung
