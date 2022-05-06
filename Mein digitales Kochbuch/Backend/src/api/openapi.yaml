@@ -77,6 +77,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Rezept'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL des angelegten Datensatzes
       operationId: post-rezept
       description: Rezept anlegen
       requestBody:
@@ -217,7 +222,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Bewertung'
-          headers: {}
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL des angelegten Datensatzes
       operationId: post-bewertung
       description: Bewertung anlegen
       requestBody:
@@ -322,6 +331,28 @@ paths:
           in: query
           name: rezeptname
           description: Gesuchter Rezeptname
+    post:
+      summary: ''
+      operationId: post-favoriten
+      responses:
+        '201':
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL des angelegten Datensatzes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favoriten'
+      description: Favorit anlegen
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Favoriten'
+        description: Daten des anzulegenden Favorits
   '/favoriten/{id}':
     parameters:
       - schema:
@@ -382,6 +413,28 @@ paths:
           in: query
           name: zutaten
           description: Gesuchte Zutaten
+    post:
+      summary: ''
+      operationId: post-einkaufsliste
+      responses:
+        '201':
+          description: Created
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL des angelegten Datensatzes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Einkaufsliste'
+      description: Einkauf anlegen
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Einkaufsliste'
+        description: Daten des anzulegenden Einkaufs
   '/einkaufsliste/{id}':
     parameters:
       - schema:

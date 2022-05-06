@@ -77,6 +77,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Rezept'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL des angelegten Datensatzes
       operationId: post-rezept
       description: Rezept anlegen
       requestBody:
@@ -217,6 +222,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Bewertung'
+          headers:
+            Location:
+              schema:
+                type: string
+              description: URL des angelegten Datensatzes
       operationId: post-bewertung
       description: Bewertung anlegen
       requestBody:
@@ -263,6 +273,11 @@ paths:
           description: Not Found
       operationId: put-bewertung-id
       description: 'Bewertungsdatensatz bearbeiten. Es könne alle Felder geändert werden, mit ausnahme der id des Datensatzes. Der Versuch, die id zu ändern, wird vom Server stillschweigend ignoriert.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bewertung'
     delete:
       summary: Bewertung löschen
       tags:
@@ -289,6 +304,11 @@ paths:
           description: Not Found
       operationId: patch-bewertung-id
       description: 'Bewertungsdatensatz bearbeiten. Es könne einzelne Felder geändert werden, mit ausnahme der id des Datensatzes. Der Versuch, die id zu ändern, wird vom Server stillschweigend ignoriert.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Bewertung'
   /favoriten:
     get:
       summary: Favoriten lesen
@@ -411,6 +431,8 @@ components:
       type: object
       description: Ein Rezept
       properties:
+        _links:
+          $ref: '#/components/schemas/HATEOAS_Ressource'
         _id:
           type: string
         rezeptname:
@@ -485,6 +507,8 @@ components:
       type: object
       description: Bewertung eines Rezeptes.
       properties:
+        _links:
+          $ref: '#/components/schemas/HATEOAS_Ressource'
         _id:
           type: string
         rezeptname:
