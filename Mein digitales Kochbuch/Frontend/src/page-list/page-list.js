@@ -120,7 +120,7 @@ export default class PageList extends Page {
         if (!answer) return;
 
         try {
-            this._app.backend.fetch("CREATE", `/favoriten`);
+            this._app.backend.fetch("POST", `/favoriten`);
         } catch (ex) {
             this._app.showException(ex);
             return;
@@ -134,7 +134,7 @@ export default class PageList extends Page {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zur Einkaufsliste hinzugefügt werden?");
         if (!answer) return;
         try {
-            this._app.backend.fetch("CREATE", `/einkaufsliste?id=` + id);
+            this._app.backend.fetch("POST", `/einkaufsliste?id=` + id);
         } catch (ex) {
             this._app.showException(ex);
             return;
