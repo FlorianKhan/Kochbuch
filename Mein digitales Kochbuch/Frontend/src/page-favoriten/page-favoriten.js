@@ -67,7 +67,7 @@ export default class PageFavoriten extends Page {
       olElement.appendChild(liElement);
 
       // Event Handler registrieren
-      liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
+      liElement.querySelector(".action.deleteFavoritenliste").addEventListener("click", () => this._askDelete(dataset._id));
     }
   }
 
@@ -78,7 +78,7 @@ export default class PageFavoriten extends Page {
   * @param {Integer} id ID des zu löschenden Datensatzes
   */
   async _askDelete(id) {
-    
+
     // Sicherheitsfrage zeigen
     let answer = confirm("Soll das ausgewählte Rezept wirklich von der Favoritenliste gelöscht werden?");
     if (!answer) return;
