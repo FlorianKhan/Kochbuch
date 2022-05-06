@@ -3,7 +3,10 @@
 import restify from "restify";
 import OpenApiEnforcer from "openapi-enforcer";
 import OpenApiEnforcerMiddleware from "@dschulmeis/restify-openapi-enforcer-middleware";
+
 import DatabaseFactory from "./database.js";
+
+//Import Controller
 import RootController from "./controller/root.controller.js";
 import RezeptController from "./controller/rezept.controller.js";
 import BewertungController from "./controller/bewertung.controller.js";
@@ -32,8 +35,10 @@ await DatabaseFactory.init(config.mongodb);
 * SERVER STARTEN
 * =============================================================================*/
 const server = restify.createServer({
+
   // Bei Bedarf notwendige Serverkonfiguration hier erweitern.
   // Vgl. http://restify.com/docs/server-api/#createserver
+
 });
 
 server.use(restify.plugins.acceptParser(server.acceptable));
@@ -115,11 +120,15 @@ server.listen(config.port, config.host, function() {
   console.log("  » MONGODB: URL-String mit den Verbindungsdaten zur Mongo-Datenbank");
   console.log();
   console.log(`OpenAPI-Spezifikation: ${openApiFile}`)
+
   if (openApiValidation.error) {
     console.error(`${openApiValidation.error}\n`);
   }
+
   if (openApiValidation.warning) {
     console.warn(`${openApiValidation.warning}\n`);
+
   }
   console.log();
+
 });

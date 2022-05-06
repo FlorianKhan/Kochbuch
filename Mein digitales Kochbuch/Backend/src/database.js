@@ -8,6 +8,7 @@ import { MongoClient } from "mongodb";
  * einfach das Singleton-Objekt dieser Klasse importiert und das Attribut
  * `mongodb` oder `database` ausgelesen werden.
  */
+
 class DatabaseFactory {
 
     /**
@@ -17,7 +18,9 @@ class DatabaseFactory {
      *
      * @param {String} connectionUrl URL-String mit den Verbindungsdaten
      */
+
     async init(connectionUrl) {
+
         // Datenbankverbindung herstellen
         this.client = new MongoClient(connectionUrl);
         await this.client.connect();
@@ -31,7 +34,10 @@ class DatabaseFactory {
      * Produktivanwendung natürlich nicht machen, aber so sehen wir
      * wenigstens gleich ein paar Daten.
      */
+
     async _createDemoData() {
+
+        //Demodaten von Rezepten
         let rezepte = this.database.collection("rezepte");
         if (await rezepte.estimatedDocumentCount() === 0) {
             rezepte.insertMany([
@@ -51,6 +57,8 @@ class DatabaseFactory {
                 },
             ]);
         }
+
+        //Demodaten von Bewertungen
         let bewertungen = this.database.collection("bewertungen");
         if (await bewertungen.estimatedDocumentCount() === 0) {
             bewertungen.insertMany([
@@ -68,7 +76,9 @@ class DatabaseFactory {
                 },
             ]);
         }
+
     }
+
 }
 
 export default new DatabaseFactory();
