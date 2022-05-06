@@ -47,7 +47,7 @@ export default class BewertungService {
       rezeptname:               bewertung.rezeptname              || "",
       bewertungstitel:          bewertung.bewertungstitel         || "",
       bepunktung:               bewertung.bepunktung              || "",
-      bewertungstext:           bewertung.bewertungstext          || ""
+      bewertungstext:           bewertung.bewertungstext          || "",
     };
     let result = await this._bewertungen.insertOne(newBewertung);
     return await this._bewertungen.findOne({_id: result.insertedId});

@@ -77,11 +77,11 @@ export default class PageList extends Page {
             //liElement.querySelector(".action.bewertung").addEventListener("click", () => location.hash = `#/bewertungen`);
             liElement.querySelector(".action.bewerten").addEventListener("click", () => location.hash = `#/newBewertung/`);
 
-            // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Favoritenliste
+            // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über dataset) zur Favoritenliste
             // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalb Favoritenliste möglich machen)
             liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset));
 
-            // Einkaufsliste Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Einkaufsliste
+            // Einkaufsliste Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über dataset) zur Einkaufsliste
             // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalb Einkaufsliste möglich machen)
             liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset));
         }
@@ -104,7 +104,7 @@ export default class PageList extends Page {
 
         // Datensatz speichern
         try {
-            await this._app.backend.fetch("POST", "^/favoriten/$", {body: favoriten});
+            await this._app.backend.fetch("POST", this._url, {body: favoriten});
         } catch (ex) {
             this._app.showException(ex);
             return;
@@ -131,7 +131,7 @@ export default class PageList extends Page {
 
         // Datensatz speichern
         try {
-            await this._app.backend.fetch("POST", "^/einkaufsliste/$", {body: einkaufsliste});
+            await this._app.backend.fetch("POST", this._url, {body: einkaufsliste});
         } catch (ex) {
             this._app.showException(ex);
             return;
