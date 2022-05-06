@@ -67,7 +67,7 @@ export default class PageEinkaufsliste extends Page {
       olElement.appendChild(liElement);
 
       // Event Handler registrieren
-      liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
+      liElement.querySelector(".action.deleteEinkaufsliste").addEventListener("click", () => this._askDelete(dataset._id));
     }
   }
 

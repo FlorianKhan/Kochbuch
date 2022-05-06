@@ -68,7 +68,7 @@ export default class EinkaufslisteController {
   * @param {Object} next
   */
   async create(req, res, next) {
-    let result = await this._service.create(req.query);
+    let result = await this._service.create(req.body);
     this._insertHateoasLinks(result);
     res.status(201);
     res.header("Location", `${this._prefix}/${result._id}`);
@@ -99,7 +99,7 @@ export default class EinkaufslisteController {
   * Speziellen Eintrag in der Einkaufsliste löschen
   * @param {Object} req
   * @param {Object} res
-  * @param {Object} next 
+  * @param {Object} next
   */
   async delete(req, res, next) {
     await this._service.delete(req.params.id)
