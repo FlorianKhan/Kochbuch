@@ -1,5 +1,7 @@
 <!-- Stylesheet der Seite -->
+
 <style>
+
     /* Listeneinträge */
     main ol {
         list-style: none;
@@ -60,10 +62,13 @@
          background-color: rgb(245, 213, 181);
          cursor: pointer;
      }
+
 </style>
+
 <!-- Inhalt der Seite -->
 <main>
     <ol>
+
         <!-- Platzhalter für eine leere Liste -->
         <li class="empty-placeholder">
             <div class="bewertung">
@@ -72,13 +77,7 @@
         </li>
 
         <!-- Vorlage für einen Eintrag in der Liste -->
-        <!-- Versuch 1:   Umbennenung der Klasse -->
-
-        <!-- eigene ID / unten -->
-        <!-- wird die Rezept ID dabei benötigt?     glaub NEIN -->
-
         <li class="list-entry" data-id="$ID$">
-            <!-- Felder Benennung -->
             <div class="rezeptname">
                 $REZEPTNAME$
             </div>
@@ -92,15 +91,19 @@
                 $BEWERTUNGSTEXT$
             </div>
 
-            <!-- Button;    löschen und bearbeiten (+Bewertung von page-list.html) -->
+            <!-- Funktion bearbeiten und löschen -->
             <div class="actions">
+
                 <div class="action edit">
                     <a>🖊️</a>
                 </div>
                 <div class="action delete">
                     <a>🗑️</a>
                 </div>
+
             </div>
+
         </li>
+
     </ol>
 </main>

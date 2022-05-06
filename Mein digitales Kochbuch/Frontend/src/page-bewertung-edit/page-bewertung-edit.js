@@ -7,13 +7,16 @@ import HtmlTemplate from "./page-bewertung-edit.html";
  * Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten einer Adresse
  * zur Verfügung.
  */
+
 export default class PageBewertungEdit extends Page {
+
     /**
      * Konstruktor.
      *
      * @param {App} app Instanz der App-Klasse
      * @param {Integer} editId ID des bearbeiteten Datensatzes
      */
+
     constructor(app, editId) {
         super(app, HtmlTemplate);
 
@@ -21,17 +24,17 @@ export default class PageBewertungEdit extends Page {
         this._editId = editId;
 
         this._dataset = {
-            rezeptname: "",
-            bewertungstitel: "",
-            bepunktung: "",
-            bewertungstext: "",
+            rezeptname:       "",
+            bewertungstitel:  "",
+            bepunktung:       "",
+            bewertungstext:   "",
         };
 
         // Eingabefelder
-        this._rezeptnameInput = null;
-        this._bewertungstitelInput = null;
-        this._bepunktungInput  = null;
-        this._bewertungstextInput     = null;
+        this._rezeptnameInput       = null;
+        this._bewertungstitelInput  = null;
+        this._bepunktungInput       = null;
+        this._bewertungstextInput   = null;
     }
 
     /**
@@ -49,7 +52,9 @@ export default class PageBewertungEdit extends Page {
      * Apps würde man ggf. eine Template Engine wie z.B. Nunjucks integrieren
      * und den JavaScript-Code dadurch deutlich vereinfachen.
      */
+
     async init() {
+
         // HTML-Inhalt nachladen
         await super.init();
 
@@ -76,17 +81,19 @@ export default class PageBewertungEdit extends Page {
         saveButton.addEventListener("click", () => this._saveAndExit());
 
         // Eingabefelder zur späteren Verwendung merken
-        this._rezeptnameInput         = this._mainElement.querySelector("input.rezeptname");
-        this._bewertungstitelInput         = this._mainElement.querySelector("input.bewertungstitel");
-        this._bepunktungInput              = this._mainElement.querySelector("input.bepunktung");
-        this._bewertungstextInput = this._mainElement.querySelector("input.bewertungstext");
+        this._rezeptnameInput       = this._mainElement.querySelector("input.rezeptname");
+        this._bewertungstitelInput  = this._mainElement.querySelector("input.bewertungstitel");
+        this._bepunktungInput       = this._mainElement.querySelector("input.bepunktung");
+        this._bewertungstextInput   = this._mainElement.querySelector("input.bewertungstext");
     }
 
     /**
      * Speichert den aktuell bearbeiteten Datensatz und kehrt dann wieder
      * in die Listenübersicht zurück.
      */
+
     async _saveAndExit() {
+
         // Eingegebene Werte prüfen
         this._dataset._id                = this._editId;
         this._dataset.rezeptname         = this._rezeptnameInput.value.trim();
