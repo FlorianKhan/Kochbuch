@@ -19,19 +19,13 @@ html {
 }
 
 /* Titel */
-.titel img {
-  display: block;
-  margin: auto;
-  width: 8em;
-  height: auto;
-}
-.titel h1 {
+.titel h3 {
   text-align: center;
   font-family: 'Brush Script MT', cursive;
-  color: rgb(245, 213, 181);
-  size: 80pt;
-  border-top: 3px solid white;
-  border-bottom: 3px solid white;
+  font-size: 35pt;
+  color: black;
+  border-top: 3px solid rgb(245, 213, 181);
+  border-bottom: 3px solid rgb(245, 213, 181);
 }
 
 @media (min-width: 40em) {
@@ -40,23 +34,25 @@ html {
     background-image: url(img/background.jpg);
     background-repeat: no-repeat;
     background-size: auto;
-
     font-size: 11pt;
   }
 
   body {
     max-width: 70em;
     margin: 0 auto;
-    margin-top: 5em;
+    margin-top: 2em;
     margin-bottom: 2em;
 
 
   }
-  .titel img {
-    display: block;
-    margin: auto;
-    width: 10em;
-    height: auto;
+
+  .titel h3 {
+    text-align: center;
+    font-family: 'Brush Script MT', cursive;
+    font-size: 40pt;
+    color: grey;
+    border-top: 5px solid rgb(245, 213, 181);
+    border-bottom: 5px solid rgb(245, 213, 181);
   }
 
 }
