@@ -2,6 +2,7 @@
 
 import Page from "../page.js";
 import HtmlTemplate from "./page-list.html";
+import PageEinkaufsliste from "../page-einkaufsliste/page-einkaufsliste.js";
 
 /**
  * Klasse PageList: Stellt die Listenübersicht der Rezepte zur Verfügung
@@ -77,11 +78,11 @@ export default class PageList extends Page {
 
             // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Favoritenliste
             // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalb Favoritenliste möglich machen)
-            liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset._id));
+            liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset));
 
             // Einkaufsliste Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über _id) zur Einkaufsliste
             // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalb Einkaufsliste möglich machen)
-            liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset._id));
+            liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset));
         }
     }
 
@@ -115,30 +116,45 @@ export default class PageList extends Page {
     }
         //Favorit-Methoden (Kopie ausprogrammieren)
 
-    async _hinzufügenFavorit(id) {
+    async _hinzufügenFavorit(dataset) {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zu Favoriten hinzugefügt werden?");
         if (!answer) return;
+        // Eingegebene Werte prüfen
+        let favoriten = {
+            rezeptname: dataset.rezeptname,
+        };
 
+        // Datensatz speichern
         try {
-            this._app.backend.fetch("POST", `/favoriten`);
+            await this._app.backend.fetch("POST", "^/favoriten/$", {body: favoriten});
         } catch (ex) {
             this._app.showException(ex);
             return;
         }
-        this._mainElement.querySelector(`[data-id="${id}"]`)?.createElement();
 
+        // Zurück zur Übersicht
+        location.hash = "#/favoriten";
     }
 
         //Einkaufsliste-Methode (Kopie ausprogrammieren)
-    async _hinzufügenEinkaufsliste(id) {
+    async _hinzufügenEinkaufsliste(dataset) {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zur Einkaufsliste hinzugefügt werden?");
         if (!answer) return;
+        // Eingegebene Werte prüfen
+        let einkaufsliste = {
+            rezeptname: dataset.rezeptname,
+            zutaten:    dataset.zutaten,
+        };
+
+        // Datensatz speichern
         try {
-            this._app.backend.fetch("POST", `/einkaufsliste?id=` + id);
+            await this._app.backend.fetch("POST", "^/einkaufsliste/$", {body: einkaufsliste});
         } catch (ex) {
             this._app.showException(ex);
             return;
         }
-        this._mainElement.querySelector(`[data-id="${id}"]`)?.createElement();
+
+        // Zurück zur Übersicht
+        location.hash = "#/einkaufsliste";
     }
 };

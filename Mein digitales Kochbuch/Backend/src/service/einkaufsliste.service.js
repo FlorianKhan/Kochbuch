@@ -41,17 +41,17 @@ export default class EinkaufslisteService {
      * @param {Object} rezept Zu speichernde Daten der Einkaufsliste
      * @return {Promise} Gespeicherte Daten der Einkaufsliste
      */
-    async create(rezeptID) {
-        einkauf = rezeptID || {};
-        console.log(rezeptID);
+     async create(einkauf) {
+         einkauf = einkauf || {};
 
-        let newEinkauf = {
-            rezeptname:               rezept.rezeptname         || ""
-        };
+         let newEinkauf = {
+             rezeptname:               einkauf.rezeptname         || "",
+             zutaten:                  einkauf.zutaten            || "",
+         };
 
-        let result = await this._einkäufe.insertOne(newEinkauf);
-        return await this._einkäufe.findOne({_id: result.insertedId});
-    }
+         let result = await this._einkäufe.insertOne(newRezept);
+         return await this._einkäufe.findOne({_id: result.insertedId});
+     }
 
     /**
      * Auslesen eines vorhandenen Eintrags anhand seiner ID.
