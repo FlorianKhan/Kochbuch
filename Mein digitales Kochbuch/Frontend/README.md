@@ -9,6 +9,7 @@ Inhaltsverzeichnis
  3. [Node.js-Kommandozeilenbefehle](#nodejs-kommandozeilenbefehle)
  4. [Node.js in Docker ausführen](#nodejs-in-docker-ausführen)
  5. [Produktives Container Image bauen](#produktives-container-image-bauen)
+ 6. [Dokumentation eines spezifischen Fehlers](#dokumentation-eines-spezifischen-fehlers)
 
 1. Kurzbeschreibung
 ----------------
@@ -120,3 +121,16 @@ hierfür benötigt:
 Das `Dockerfile` wird auch verwendet, wenn im Wurzelverzeichnis mit Docker
 Compose die Datei `docker-compose.prod.yml` ausgeführt wird. Der Container wird
 im Grunde genommen damit auch auf die gleiche Art gestartet.
+
+6. Dokumentation eines spezifischen Fehlers
+---------------------------------
+
+Beim löschen eines Rezeptes / einer Bewertung / eines Rezeptes auf der Favoritenliste / eines Rezeptes auf der Einkaufsliste
+erscheint ein spezifischer Fehler im Frontend:
+
+Uncaught (in promise) SyntaxError: Unexpected end of JSON input
+    at Backend.fetch (backend.js:89:29)
+
+Diese Fehlermeldung ist uns bewusst, allerdings konnte die Quelle unsererseits nicht identifiziert und somit nicht gelöst werden.
+Da es aber die Funktionalität des Löschens nicht beeinträchtigt, wurden hierfür keine Maßnahmen getroffen.
+Außerdem ist dieser Fehler bereits im Vorlagen-Grundgerüst "Adressbuch" aufzufinden.
