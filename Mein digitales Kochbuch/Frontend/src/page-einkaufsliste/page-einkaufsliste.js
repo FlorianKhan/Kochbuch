@@ -4,8 +4,10 @@ import Page from "../page.js";
 import HtmlTemplate from "./page-einkaufsliste.html";
 
 /**
-* Klasse PageEinkaufsliste: Stellt die Übersicht der Einkaufsliste dar
+* Klasse PageEinkaufsliste: Stellt die Listenübersicht der Einträge auf der
+* Einkaufsliste dar
 */
+
 export default class PageEinkaufsliste extends Page {
 
   /**
@@ -13,6 +15,7 @@ export default class PageEinkaufsliste extends Page {
   *
   * @param {App} app Instanz der App-Klasse
   */
+
   constructor(app) {
     super(app, HtmlTemplate);
 
@@ -28,7 +31,13 @@ export default class PageEinkaufsliste extends Page {
   * anzuzeigen. Hier muss daher einfach mit dem üblichen DOM-Methoden
   * `this._mainElement` nachbearbeitet werden, um die angezeigten Inhalte
   * zu beeinflussen.
+  *
+  * HINWEIS: In dieser Version der App wird mit dem üblichen DOM-Methoden
+  * gearbeitet, um den finalen HTML-Code der Seite zu generieren. In größeren
+  * Apps würde man ggf. eine Template Engine wie z.B. Nunjucks integrieren
+  * und den JavaScript-Code dadurch deutlich vereinfachen.
   */
+
   async init() {
 
     // HTML-Inhalt nachladen
@@ -67,16 +76,19 @@ export default class PageEinkaufsliste extends Page {
       olElement.appendChild(liElement);
 
       // Event Handler registrieren
+      // Event  Handler zum löschen eines Eintrags aus der Einkaufsliste
       liElement.querySelector(".action.deleteEinkaufsliste").addEventListener("click", () => this._askDelete(dataset._id));
     }
   }
 
   /**
-  * Löschen des übergebenen Rezepts aus der Einkaufsliste. Zeigt einen Popup, ob der Anwender
-  * das Rezept löschen will und löscht dieses dann.
+  * Löschen des übergebenen Rezepts aus der Einkaufsliste. Zeigt einen Popup,
+  * ob der Anwender das Rezept aus der Einkaufsliste löschen will und löscht
+  * dieses dann.
   *
   * @param {Integer} id ID des zu löschenden Datensatzes
   */
+
   async _askDelete(id) {
 
     // Sicherheitsfrage zeigen

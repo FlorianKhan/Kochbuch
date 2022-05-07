@@ -82,7 +82,8 @@ export default class PageFavoriten extends Page {
 
   /**
   * Löschen des übergebenen Rezepts aus der Favoritenliste. Zeigt einen Popup,
-  * ob der Anwender das Rezept löschen will und löscht dieses dann.
+  * ob der Anwender das Rezept aus der Favoritenliste löschen will und
+  * löscht dieses dann.
   *
   * @param {Integer} id ID des zu löschenden Datensatzes
   */
