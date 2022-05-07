@@ -8,6 +8,8 @@ Umgesetzter Funktionsumfang
 - Rezepte löschen
 - Rezepte bearbeiten
 - Rezepte bewerten
+- Bewertungen bearbeiten
+- Bewertungen löschen
 - Rezepte auf eine Favoritenliste hinzufügen
 - Rezepte von der Favoritenliste löschen
 - Rezepte auf die Einkaufsliste hinzufügen

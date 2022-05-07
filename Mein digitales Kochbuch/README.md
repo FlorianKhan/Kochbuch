@@ -19,17 +19,21 @@ Hier wird eine Single Page App zur Verwaltung von Rezeptdatensätzen
 implementiert, die folgende Entitäten beinhaltet:
 
   1. Rezepte:
-        Eine Auflistung aller Rezepte in diesem Kochbuch. Es können neue Rezepte erstellt,
-        vorhandene bearbeitet und gelöscht werden.
+        Eine Auflistung aller Rezepte in diesem Kochbuch. Es können neue Rezepte
+         erstellt, vorhandene bearbeitet und gelöscht werden.
   2. Bewertungen zu den Rezepten:
-        Möglichkeit, jedes Rezept anhand von Sternen zu beurteilen und einen Kommentar abzugeben.
+        Möglichkeit, jedes Rezept anhand von Sternen zu beurteilen und einen
+        Kommentar abzugeben. Es ist auch eine mehrfach Bewertung eines Rezeptes
+        möglich.
         Diese Bewertung lässt sich bei Bedarf auch ändern und löschen.
   3. Favoritenliste:
         Möglichkeit, bestimmte Lieblingsrezepte zu den Favoriten hinzuzufügen.
-        Favoriten können im Nachhinein wieder von der Liste entfernt werden.
+        Favoriten können im Nachhinein wieder von der Favoritenliste entfernt
+        werden.
   4. Einkaufsliste:
-        Besteht der Wunsch einen bestimmtes Rezept nachzukochen, können dessen Zutaten
-        auf die Einkaufsliste gesetzt und später wieder entfernt werden.
+        Besteht der Wunsch einen bestimmtes Rezept nachzukochen, können dessen
+        Zutaten und der Rezeptname auf die Einkaufsliste gesetzt werden und
+        bei Bedarf von der Einkaufsliste wieder zu entfernen.
 
 Diese Version beinhaltet jedoch neben der Benutzeroberfläche auch ein vollständiges
 REST-Backend zur Ablage der Rezepte in einer zentralen Datenbank und auch die
