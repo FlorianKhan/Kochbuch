@@ -51,6 +51,7 @@
     cursor: pointer;
   }
 
+
   /* Tooltip */
   .tooltip {
     position: relative;
@@ -97,7 +98,6 @@
 <main>
   <div>
     <div class="form">
-
       <input class="rezeptname" placeholder="Rezeptname" value="$REZEPTNAME$" />
       <input class="bewertungstitel" placeholder="Bewertungstitel" value="$BEWERTUNGSTITEL$" />
       <input class="bepunktung" placeholder="Bepunktung" value="$BEPUNKTUNG$" type="search" list="mylistBepunktung"/>
@@ -105,23 +105,23 @@
       <!-- Drop-Down-Menü zur Bepunktung -->
       <datalist id="mylistBepunktung">
         <option value="⭐️">
-          <option value="⭐️⭐️">
-            <option value="⭐️⭐️⭐️">
-              <option value="⭐️⭐️⭐️⭐️">
-                <option value="⭐️⭐️⭐️⭐️⭐️">
-                </datalist>
+        <option value="⭐️⭐️">
+        <option value="⭐️⭐️⭐️">
+        <option value="⭐️⭐️⭐️⭐️">
+        <option value="⭐️⭐️⭐️⭐️⭐️">
+      </datalist>
 
-                <input class="bewertungstext" placeholder="Bewertungstext" value="$BEWERTUNGSTEXT$" />
+      <input class="bewertungstext" placeholder="Bewertungstext" value="$BEWERTUNGSTEXT$" />
 
-              </div>
+      </div>
 
-              <!-- Funktion speichern -->
-              <div class="actions">
-                <div class="action save">
-                  <a class="tooltip">💾
-                    <span class="tooltiptext">speichern</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </main>
+      <div class="actions">
+        <div class="action save">
+          <a class="tooltip">💾
+            <span class="tooltiptext">speichern</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>

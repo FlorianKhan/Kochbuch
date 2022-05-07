@@ -4,9 +4,10 @@ import Page from "../page.js";
 import HtmlTemplate from "./page-bewertung-edit.html";
 
 /**
-* Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten einer Adresse
-* zur Verfügung.
+* Klasse PageBewertungEdit: Stellt die Seite zum Anlegen oder Bearbeiten
+* einer Bewertung zur Verfügung.
 */
+
 export default class PageBewertungEdit extends Page {
 
   /**
@@ -15,6 +16,7 @@ export default class PageBewertungEdit extends Page {
   * @param {App} app Instanz der App-Klasse
   * @param {Integer} editId ID des bearbeiteten Datensatzes
   */
+
   constructor(app, editId) {
     super(app, HtmlTemplate);
 
@@ -50,6 +52,7 @@ export default class PageBewertungEdit extends Page {
   * Apps würde man ggf. eine Template Engine wie z.B. Nunjucks integrieren
   * und den JavaScript-Code dadurch deutlich vereinfachen.
   */
+
   async init() {
 
     // HTML-Inhalt nachladen
@@ -88,6 +91,7 @@ export default class PageBewertungEdit extends Page {
   * Speichert den aktuell bearbeiteten Datensatz und kehrt dann wieder
   * in die Listenübersicht zurück.
   */
+
   async _saveAndExit() {
 
     // Eingegebene Werte prüfen
