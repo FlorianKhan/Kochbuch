@@ -6,6 +6,7 @@ import HtmlTemplate from "./page-list.html";
 /**
 * Klasse PageList: Stellt die Listenübersicht der Rezepte zur Verfügung
 */
+
 export default class PageList extends Page {
 
     /**
@@ -13,6 +14,7 @@ export default class PageList extends Page {
     *
     * @param {App} app Instanz der App-Klasse
     */
+
     constructor(app) {
       super(app, HtmlTemplate);
 
@@ -45,11 +47,13 @@ export default class PageList extends Page {
 
         // Je Datensatz einen Listeneintrag generieren
         let olElement = this._mainElement.querySelector("ol");
+
         let templateElement = this._mainElement.querySelector(".list-entry");
         let templateHtml = templateElement.outerHTML;
         templateElement.remove();
 
         for (let index in data) {
+
             // Platzhalter ersetzen
             let dataset = data[index];
             let html = templateHtml;
@@ -69,29 +73,31 @@ export default class PageList extends Page {
             olElement.appendChild(liElement);
 
             // Event Handler registrieren
+
+            // Event Handler um Rezepte zu bearbeiten und um Rezepte zu löschen
             liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/editRezept/${dataset._id}`);
             liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
 
-            // Bewertung Handler (beim Klick auf diesen Button muss auf die Seite Bewertungen gewechselt wwerden)
-            //liElement.querySelector(".action.bewertung").addEventListener("click", () => location.hash = `#/bewertungen`);
+            // Event Handler um eine neue Bewertung zu erstellen
             liElement.querySelector(".action.bewerten").addEventListener("click", () => location.hash = `#/newBewertung/`);
+            //liElement.querySelector(".action.bewertung").addEventListener("click", () => location.hash = `#/bewertungen`);
 
-            // Favorit Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über dataset) zur Favoritenliste
-            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben.Löschung nur innerhalb Favoritenliste möglich machen)
+            // Event Handler zum hinzufügen des Rezeptes zur Favoritenliste
             liElement.querySelector(".action.favorit").addEventListener("click", () => this._hinzufügenFavorit(dataset));
 
-            // Einkaufsliste Handler (beim Klick auf diesen Button muss das entsprechene Rezept (über dataset) zur Einkaufsliste
-            // hinzugefügt werden. Am besten Button bei Hinzufügung farblich abheben. Löschung nur innerhalb Einkaufsliste möglich machen)
+            // Event Handler zum hinzufügen des Rezeptes zur Einkaufsliste
             liElement.querySelector(".action.einkaufsliste").addEventListener("click", () => this._hinzufügenEinkaufsliste(dataset));
+
         }
     }
 
     /**
-    * Löschen eines Rezepts. Zeigt einen Popup, ob der Anwender
+    * Löschen des übergebenen Rezeptes. Zeigt einen Popup, ob der Anwender
     * das Rezept löschen will und löscht dieses dann.
     *
     * @param {Integer} id ID des zu löschenden Datensatzes
     */
+
     async _askDelete(id) {
 
       // Sicherheitsfrage zeigen
@@ -105,7 +111,7 @@ export default class PageList extends Page {
         this._app.showException(ex);
         return;
       }
-      
+
       // HTML-Element entfernen
       this._mainElement.querySelector(`[data-id="${id}"]`)?.remove();
 
@@ -117,14 +123,18 @@ export default class PageList extends Page {
     }
 
     /**
-    * Hinzufügen von Favoriten. Zeigt einen Popup, ob der Anwender
-    * das Rezept zu den Favoriten hinzufügen will und tut dieses dann im Anschluss.
+    * Hinzufügen des Rezeptes zu den Favoriten. Zeigt einen Popup, ob der
+    * Anwender das Rezept zu den Favoriten hinzufügen will und tut dieses
+    * dann im Anschluss.
     *
-    * @param {Array[Integer]} dataset Daten des Rezeptes, welches zu den Favoriten hinzugefügt werden soll
+    * @param {Array[Integer]} dataset Daten des Rezeptes, welches zu den
+    * Favoriten hinzugefügt werden soll
     */
+
     async _hinzufügenFavorit(dataset) {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zu Favoriten hinzugefügt werden?");
         if (!answer) return;
+
         // Eingegebene Werte prüfen
         let favoriten = {
             rezeptname: dataset.rezeptname,
@@ -143,11 +153,14 @@ export default class PageList extends Page {
     }
 
     /**
-    * Hinzufügen zur Einkaufsliste. Zeigt einen Popup, ob der Anwender
-    * das Rezept auf die Einkaufsliste hinzufügen will und tut dieses dann im Anschluss.
+    * Hinzufügen des Rezptes zur der Einkaufsliste. Zeigt einen Popup, ob
+    * der Anwender das Rezept auf die Einkaufsliste hinzufügen will und
+    * tut dieses dann im Anschluss.
     *
-    * @param {Array[Integer]} dataset Daten des Rezeptes, welches zur Einkaufsliste hinzugefügt werden soll
+    * @param {Array[Integer]} dataset Daten des Rezeptes, welches zur
+    * Einkaufsliste hinzugefügt werden soll
     */
+
     async _hinzufügenEinkaufsliste(dataset) {
         let answer = confirm("Soll das ausgewählte Rezept wirklich zur Einkaufsliste hinzugefügt werden?");
         if (!answer) return;
@@ -169,4 +182,5 @@ export default class PageList extends Page {
         // Zurück zur Übersicht
         location.hash = "#/einkaufsliste";
     }
+    
 };
