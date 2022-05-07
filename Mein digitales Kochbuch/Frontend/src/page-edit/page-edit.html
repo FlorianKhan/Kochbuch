@@ -58,17 +58,18 @@
   .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
   }
 
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: #555;
+    background-color: grey;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
+
+    /* Position des Tooltip */
     position: absolute;
     z-index: 1;
     bottom: 125%;
@@ -86,7 +87,7 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #555 transparent transparent transparent;
+    border-color: grey transparent transparent transparent;
   }
 
   .tooltip:hover .tooltiptext {
@@ -99,6 +100,8 @@
 <!-- Inhalt der Seite -->
 <main>
   <div>
+
+    <!-- Formularvorlage des Rezeptes -->
     <div class="form">
       <input class="rezeptname" placeholder="Rezeptname" value="$REZEPTNAME$" />
       <input class="dauer" placeholder="Dauer" value="$DAUER$" />
@@ -118,10 +121,11 @@
 
       </div>
 
+      <!-- Button: Speichern des Rezeptes -->
       <div class="actions">
         <div class="action save">
           <a class="tooltip">💾
-            <span class="tooltiptext">speichern</span>
+            <span class="tooltiptext">Rezept speichern</span>
           </a>
         </div>
       </div>
