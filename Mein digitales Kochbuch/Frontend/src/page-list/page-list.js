@@ -38,6 +38,7 @@ export default class PageList extends Page {
     */
 
     async init() {
+      
         // HTML-Inhalt nachladen
         await super.init();
         this._title = "Übersicht";

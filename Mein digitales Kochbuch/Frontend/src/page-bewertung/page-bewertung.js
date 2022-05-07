@@ -7,6 +7,7 @@ import HtmlTemplate from "./page-bewertung.html";
 * Klasse PageBewertung stellt die Listenübersicht der Bewertungen
 * zur Verfügung
 */
+
 export default class PageBewertung extends Page {
 
   /**
@@ -14,6 +15,7 @@ export default class PageBewertung extends Page {
   *
   * @param {App} app Instanz der App-Klasse
   */
+
   constructor(app) {
     super(app, HtmlTemplate);
 
@@ -29,7 +31,13 @@ export default class PageBewertung extends Page {
   * anzuzeigen. Hier muss daher einfach mit dem üblichen DOM-Methoden
   * `this._mainElement` nachbearbeitet werden, um die angezeigten Inhalte
   * zu beeinflussen.
+  *
+  * HINWEIS: In dieser Version der App wird mit dem üblichen DOM-Methoden
+  * gearbeitet, um den finalen HTML-Code der Seite zu generieren. In größeren
+  * Apps würde man ggf. eine Template Engine wie z.B. Nunjucks integrieren
+  * und den JavaScript-Code dadurch deutlich vereinfachen.
   */
+
   async init() {
 
     // HTML-Inhalt nachladen
@@ -70,9 +78,9 @@ export default class PageBewertung extends Page {
       liElement.remove();
       olElement.appendChild(liElement);
 
-      // Event Handler registrieren (Funktionen bearbeiten und löschen)
+      // Event Handler registrieren
+      // Event Handler um Bewertungen zu bearbeiten und um Bewertungen zu löschen
       liElement.querySelector(".action.edit").addEventListener("click", () => location.hash = `#/editBewertung/${dataset._id}`);
-      // Löschen der datenset._id --> somit nicht das Rezept
       liElement.querySelector(".action.delete").addEventListener("click", () => this._askDelete(dataset._id));
 
     }
@@ -84,6 +92,7 @@ export default class PageBewertung extends Page {
   *
   * @param {Integer} id ID des zu löschenden Datensatzes
   */
+
   async _askDelete(id) {
 
     // Sicherheitsfrage zeigen
