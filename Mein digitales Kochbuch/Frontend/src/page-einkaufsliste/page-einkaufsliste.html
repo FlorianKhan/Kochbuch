@@ -72,17 +72,18 @@
   .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
   }
 
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: #555;
+    background-color: grey;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
+
+    /* Position des Tooltip */
     position: absolute;
     z-index: 1;
     bottom: 125%;
@@ -100,7 +101,7 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #555 transparent transparent transparent;
+    border-color: grey transparent transparent transparent;
   }
 
   .tooltip:hover .tooltiptext {
@@ -132,16 +133,16 @@
         $ZUTATEN$
       </div>
 
-      <!-- Button: Lösche von Einkaufsliste -->
+      <!-- Button: Löschen eines Eintrags von der Einkaufsliste -->
       <div class="actions">
         <div class="action deleteEinkaufsliste">
           <a class="tooltip">🗑️
-            <span class="tooltiptext">löschen</span>
+            <span class="tooltiptext">aus der Einkaufsliste entfernen</span>
           </a>
         </div>
       </div>
 
     </li>
-    
+
   </ol>
 </main>

@@ -69,17 +69,18 @@
   .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
   }
 
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: #555;
+    background-color: grey;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
+
+    /* Position des Tooltip */
     position: absolute;
     z-index: 1;
     bottom: 125%;
@@ -97,7 +98,7 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #555 transparent transparent transparent;
+    border-color: grey transparent transparent transparent;
   }
 
   .tooltip:hover .tooltiptext {
@@ -133,17 +134,23 @@
       <div class="bewertungstext">
         $BEWERTUNGSTEXT$
       </div>
+
       <div class="actions">
+
+        <!-- Button: Bearbeiten von einer Bewertung -->
         <div class="action edit">
           <a class="tooltip">🖊️
-            <span class="tooltiptext">bearbeiten</span>
+            <span class="tooltiptext">Bewertung bearbeiten</span>
           </a>
         </div>
+
+        <!-- Button: Löschen einer Bewertung -->
         <div class="action delete">
           <a class="tooltip">🗑️
-            <span class="tooltiptext">löschen</span>
+            <span class="tooltiptext">Bewertung löschen</span>
           </a>
         </div>
+
       </div>
     </li>
 

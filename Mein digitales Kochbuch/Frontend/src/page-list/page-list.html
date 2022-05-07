@@ -64,23 +64,22 @@
     cursor: pointer;
   }
 
-
-
   /* Tooltip */
   .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
   }
 
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: #555;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 5px 0;
+    background-color: grey;
+
+    /* Position des Tooltip */
     position: absolute;
     z-index: 1;
     bottom: 125%;
@@ -98,7 +97,7 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: #555 transparent transparent transparent;
+    border-color: grey transparent transparent transparent;
   }
 
   .tooltip:hover .tooltiptext {
@@ -138,32 +137,44 @@
       <div class="zubereitung">
         $ZUBEREITUNG$
       </div>
+
       <div class="actions">
+
+        <!-- Button: Bearbeiten von einem Rezept -->
         <div class="action edit">
           <a class="tooltip">🖊️
-            <span class="tooltiptext">bearbeiten</span>
+            <span class="tooltiptext">Rezept bearbeiten</span>
           </a>
         </div>
+
+        <!-- Button: Löschen eines Rezeptes -->
         <div class="action delete">
           <a class="tooltip">🗑️
-            <span class="tooltiptext">löschen</span>
+            <span class="tooltiptext">Rezept löschen</span>
           </a>
         </div>
+
+        <!-- Button: eine Bewertung erstellen -->
         <div class="action bewerten">
           <a class="tooltip">⭐️
-            <span class="tooltiptext">bewerten</span>
+            <span class="tooltiptext">Bewertung erstellen</span>
           </a>
         </div>
+
+        <!-- Button: Rezept zu der Favoritenliste -->
         <div class="action favorit">
           <a class="tooltip">❤️
             <span class="tooltiptext">zu Favoriten hinzufügen</span>
           </a>
         </div>
+
+        <!-- Button: Rezept zu der Einkaufsliste hinzufügen -->
         <div class="action einkaufsliste">
           <a class="tooltip">🛒
             <span class="tooltiptext">zur Einkaufsliste hinzufügen</span>
           </a>
         </div>
+
       </div>
     </li>
 
