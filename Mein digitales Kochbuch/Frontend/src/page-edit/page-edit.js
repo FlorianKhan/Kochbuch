@@ -24,11 +24,11 @@ export default class PageEdit extends Page {
     this._editId = editId;
 
     this._dataset = {
-      rezeptname: "",
-      dauer: "",
+      rezeptname:         "",
+      dauer:              "",
       schwierigkeitsgrad: "",
-      zutaten: "",
-      zubereitung: "",
+      zutaten:            "",
+      zubereitung:        "",
     };
 
     // Eingabefelder
