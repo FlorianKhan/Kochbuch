@@ -6,11 +6,13 @@
 * die Funktionen des Backends aufzurufen. Insbesondere versteckt sie die
 * HTTP-Kommunikation vor ihren Verwendern.
 */
+
 export default class Backend {
 
   /**
   * Konstruktor.
   */
+
   constructor() {
     this._url = "";
   }
@@ -48,6 +50,7 @@ export default class Backend {
   * @param {object} options Konfigurationswerte (optional)
   * @returns {Promise} Ergebnis des eigentlichen fetch()-Aufrufs
   */
+
   async fetch(method, url, options) {
     options = options || {};
 

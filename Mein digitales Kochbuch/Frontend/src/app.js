@@ -8,15 +8,18 @@ import "./app.css";
 * Hauptklasse App: Steuert die gesamte Anwendung
 *
 * Diese Klasse erzeugt den Single Page Router zur Navigation innerhalb
-* der Anwendung und ein Datenbankobjekt zur Verwaltung der Adressliste.
+* der Anwendung und ein Datenbankobjekt zur Verwaltung der Rezeptliste,
+* Bewertungen, Favoriten und der Einkaufsliste.
 * Darüber hinaus beinhaltet sie verschiedene vom Single Page Router
 * aufgerufene Methoden, zum Umschalten der aktiven Seite.
 */
+
 class App {
 
   /**
   * Konstruktor.
   */
+
   constructor() {
 
     // Datenbank-Klasse zur Verwaltung der Datensätze
@@ -69,6 +72,7 @@ class App {
   * auf die Fertigstellung von Hintergrundaktivitäten warten, ohne dabei
   * mit den zugrunde liegenden Promise-Objekten direkt hantieren zu müssen.
   */
+
   async init() {
     try {
       await this.backend.init();
@@ -79,8 +83,10 @@ class App {
   }
 
   /**
-  * Übersichtsseite anzeigen. Wird vom Single Page Router aufgerufen.
+  * Übersichtsseite der Rezepte anzeigen. Wird vom Single Page Router
+  * aufgerufen.
   */
+
   async _gotoListR() {
     try {
 
@@ -99,6 +105,7 @@ class App {
   * Seite zum Anlegen eines neuen Rezeptes anzeigen.  Wird vom Single Page
   * Router aufgerufen.
   */
+
   async _gotoNewR() {
     try {
 
@@ -119,6 +126,7 @@ class App {
   *
   * @param {Number} id ID des zu bearbeitenden Rezeptes
   */
+
   async _gotoEditR(id) {
     try {
 
@@ -133,6 +141,11 @@ class App {
     }
   }
 
+  /**
+  * Übersichtsseite der Bewertungen anzeigen. Wird vom Single Page Router
+  * aufgerufen.
+  */
+
   async _gotoListB() {
     try {
 
@@ -146,6 +159,14 @@ class App {
       this.showException(ex);
     }
   }
+
+  /**
+  * Seite zum Bearbeiten einer Bewertung anzeigen.  Wird vom Single Page
+  * Router aufgerufen.
+  *
+  * @param {Number} id ID der zu bearbeitendenBewertung
+  */
+
   async _gotoEditB(id) {
     try {
 
@@ -159,6 +180,12 @@ class App {
       this.showException(ex);
     }
   }
+
+  /**
+  * Seite zum Anlegen einer neuen Bewertung anzeigen.  Wird vom Single Page
+  * Router aufgerufen.
+  */
+
   async _gotoNewB() {
     try {
 
@@ -172,6 +199,12 @@ class App {
       this.showException(ex);
     }
   }
+
+  /**
+  * Übersichtsseite der Favoriten anzeigen. Wird vom Single Page Router
+  * aufgerufen.
+  */
+
   async _gotoFavoriten() {
     try {
 
@@ -185,6 +218,12 @@ class App {
       this.showException(ex);
     }
   }
+
+  /**
+  * Übersichtsseite der Einkaufsliste anzeigen. Wird vom Single Page Router
+  * aufgerufen.
+  */
+
   async _gotoEinkaufsliste() {
     try {
 
@@ -199,15 +238,15 @@ class App {
     }
   }
 
-
   /**
   * Interne Methode zum Umschalten der sichtbaren Seite.
   *
   * @param  {Page} page Objekt der anzuzeigenden Seiten
   * @param  {String} name Name zur Hervorhebung der Seite im Menü
   */
+
   _showPage(page, name) {
-    
+
     // Fenstertitel aktualisieren
     document.title = `${this._documentTitle} – ${page.title}`;
 
@@ -229,6 +268,7 @@ class App {
   *
   * @param {Object} ex Abgefangene Ausnahme
   */
+
   showException(ex) {
     console.error(ex);
 
@@ -243,6 +283,7 @@ class App {
 /**
 * Anwendung starten
 */
+
 window.addEventListener("load", async () => {
   let app = new App();
   await app.init();

@@ -8,22 +8,24 @@
 * der zentralen App-Klasse. Sie ruft dementsprechend die Methoden des
 * Page-Objekts auf, um die Inhalte zu ermitteln.
 */
+
 export default class Page {
 
-  /**
-  * Konstruktor. Muss von den erbenden Klassen immer aufgerufen werden, um
-  * das App-Objekt zu übergeben. Die erbenden Klassen sollten daher am
-  * besten auch einen Konstruktor besitzen, dem das App-Objekt übergeben
-  * wird.
-  *
-  * Der Parameter für den HTML-String sollte hingegen von der erbenden
-  * Klasse versorgt werden, wobei das HTML-Template in der Regel (da wir
+    /**
+    * Konstruktor. Muss von den erbenden Klassen immer aufgerufen werden, um
+    * das App-Objekt zu übergeben. Die erbenden Klassen sollten daher am
+    * besten auch einen Konstruktor besitzen, dem das App-Objekt übergeben
+    * wird.
+    *
+    * Der Parameter für den HTML-String sollte hingegen von der erbenden
+    * Klasse versorgt werden, wobei das HTML-Template in der Regel (da wir
     * hier einen Bundler nutzen) aus einer separaten HTML-Datei importiert
     * werden sollte.
     *
     * @param {App} app - Zentralles App-Objekt
     * @param {string} htmlString - Inhalt des HTML-Templates
     */
+
     constructor(app, htmlString) {
       this._app = app;
 
@@ -51,6 +53,7 @@ export default class Page {
     * kann dann das HTML-Element in `this._mainElement` verändert werden, um
     * den sichtbaren Inhalt zu beeinflussen oder Event Handler zu registrieren.
     */
+
     async init() {
       let dummyElement = document.createElement("div");
       dummyElement.innerHTML = this._htmlString;
@@ -61,22 +64,31 @@ export default class Page {
     }
 
     /**
+    * Gibt der Titel der Seite zurück
+    *
     * @returns {string} Titel der Seite
     */
+
     get title() {
       return this._title;
     }
 
     /**
+    * Gibt den Inhalt des CSS-Stylehseets zurück
+    *
     * @returns {string} Inhalt des CSS-Stylehseets
     */
+
     get css() {
       return this._cssString;
     }
 
     /**
+    * Gibt HTML-Element für den Hauptbereich oder null zurück
+    *
     * @returns {DOMElement} HTML-Element für den Hauptbereich oder null
     */
+
     get mainElement() {
       return this._mainElement;
     }

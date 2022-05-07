@@ -1,3 +1,11 @@
+/**
+ * Stylesheet zur Klasse App: Hauptstylesheet der Anwendung.
+ *
+ * Hier stehen nur allgemeine Sachen, die das Layout als Ganzes
+ * betreffen. Also solche Dinge wie Schriftart, Schriftgrößen oder Farben.
+ * Spezifische Angaben zur Listenübersicht oder dem Eingabeformular gehören
+ * stattdessen in das jeweilige Stylesheet.
+ */
 
 @import url('https://fonts.googleapis.com/css?family=Rubik');
 
@@ -42,8 +50,6 @@ html {
     margin: 0 auto;
     margin-top: 2em;
     margin-bottom: 2em;
-
-
   }
 
   .titel h3 {

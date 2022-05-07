@@ -10,6 +10,7 @@
  * mitgegeben werden, die jeweils einen regulären Ausdrück zur Prüfung der
  * URL sowie eine Funktion zur Anzeige des dazugehörigen Inhalts besitzen.
  */
+
 export default class Router {
 
     /**
@@ -30,6 +31,7 @@ export default class Router {
      *
      * @param {List} routes Definition der in der App verfügbaren Seiten
      */
+
     constructor(routes) {
         this._routes = routes;
         this._started = false;
@@ -39,6 +41,7 @@ export default class Router {
     /**
      * Routing starten und erste Route direkt aufrufen.
      */
+
     start() {
         this._started = true;
         this._handleRouting();
@@ -48,6 +51,7 @@ export default class Router {
      * Routing stoppen, so dass der Router nicht mehr aktiv wird, wenn ein Link
      * angeklickt wird oder sich die URL der Seite sonst irgendwie ändert.
      */
+
     stop() {
         this._started = false;
     }
@@ -78,6 +82,7 @@ export default class Router {
      * werden, dass er trotzdem die Startseite zurückliefert, auch wenn diese
      * nicht direkt angesprochen wurde. Diesen Aufwand sparen wir uns hier. :-)
      */
+
     _handleRouting() {
         let url = location.hash.slice(1);
 
