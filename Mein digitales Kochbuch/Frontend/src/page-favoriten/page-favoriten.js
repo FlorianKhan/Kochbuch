@@ -4,8 +4,9 @@ import Page from "../page.js";
 import HtmlTemplate from "./page-favoriten.html";
 
 /**
-* Klasse PageFavoriten: Stellt die Übersicht der Favoriten dar
+* Klasse PageFavoriten: Stellt die Listenübersicht der Favoriten dar
 */
+
 export default class PageFavoriten extends Page {
 
   /**
@@ -13,6 +14,7 @@ export default class PageFavoriten extends Page {
   *
   * @param {App} app Instanz der App-Klasse
   */
+
   constructor(app) {
     super(app, HtmlTemplate);
 
@@ -28,7 +30,13 @@ export default class PageFavoriten extends Page {
   * anzuzeigen. Hier muss daher einfach mit dem üblichen DOM-Methoden
   * `this._mainElement` nachbearbeitet werden, um die angezeigten Inhalte
   * zu beeinflussen.
+  *
+  * HINWEIS: In dieser Version der App wird mit dem üblichen DOM-Methoden
+  * gearbeitet, um den finalen HTML-Code der Seite zu generieren. In größeren
+  * Apps würde man ggf. eine Template Engine wie z.B. Nunjucks integrieren
+  * und den JavaScript-Code dadurch deutlich vereinfachen.
   */
+
   async init() {
 
     // HTML-Inhalt nachladen
@@ -67,16 +75,18 @@ export default class PageFavoriten extends Page {
       olElement.appendChild(liElement);
 
       // Event Handler registrieren
+      // Event  Handler zum löschen eines Favoriten aus der Favoritenliste
       liElement.querySelector(".action.deleteFavoritenliste").addEventListener("click", () => this._askDelete(dataset._id));
     }
   }
 
   /**
-  * Löschen des übergebenen Rezepts aus der Favoritenliste. Zeigt einen Popup, ob der Anwender
-  * das Rezept löschen will und löscht dieses dann.
+  * Löschen des übergebenen Rezepts aus der Favoritenliste. Zeigt einen Popup,
+  * ob der Anwender das Rezept löschen will und löscht dieses dann.
   *
   * @param {Integer} id ID des zu löschenden Datensatzes
   */
+
   async _askDelete(id) {
 
     // Sicherheitsfrage zeigen

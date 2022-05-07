@@ -30,6 +30,11 @@ export default class PageList extends Page {
     * anzuzeigen. Hier muss daher einfach mit dem üblichen DOM-Methoden
     * `this._mainElement` nachbearbeitet werden, um die angezeigten Inhalte
     * zu beeinflussen.
+    *
+    * HINWEIS: In dieser Version der App wird mit dem üblichen DOM-Methoden
+    * gearbeitet, um den finalen HTML-Code der Seite zu generieren. In größeren
+    * Apps würde man ggf. eine Template Engine wie z.B. Nunjucks integrieren
+    * und den JavaScript-Code dadurch deutlich vereinfachen.
     */
 
     async init() {
@@ -182,5 +187,5 @@ export default class PageList extends Page {
         // Zurück zur Übersicht
         location.hash = "#/einkaufsliste";
     }
-    
+
 };
