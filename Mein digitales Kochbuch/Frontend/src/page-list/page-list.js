@@ -38,7 +38,7 @@ export default class PageList extends Page {
     */
 
     async init() {
-      
+
         // HTML-Inhalt nachladen
         await super.init();
         this._title = "Übersicht";
@@ -138,10 +138,8 @@ export default class PageList extends Page {
     */
 
     async _hinzufügenFavorit(dataset) {
-        let answer = confirm("Soll das ausgewählte Rezept wirklich zu Favoriten hinzugefügt werden?");
-        if (!answer) return;
 
-        // Eingegebene Werte prüfen
+        // Eingegebene Werte aufnehmen
         let favoriten = {
             rezeptname: dataset.rezeptname,
         };
@@ -168,10 +166,8 @@ export default class PageList extends Page {
     */
 
     async _hinzufügenEinkaufsliste(dataset) {
-        let answer = confirm("Soll das ausgewählte Rezept wirklich zur Einkaufsliste hinzugefügt werden?");
-        if (!answer) return;
 
-        // Eingegebene Werte prüfen
+        // Eingegebene Werte aufnehmen
         let einkaufsliste = {
             rezeptname: dataset.rezeptname,
             zutaten:    dataset.zutaten,
