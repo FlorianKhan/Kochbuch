@@ -7,6 +7,7 @@ import HtmlTemplate from "./page-edit.html";
 * Klasse PageEdit: Stellt die Seite zum Anlegen oder Bearbeiten eines Rezepts
 * zur Verfügung.
 */
+
 export default class PageEdit extends Page {
 
   /**
@@ -15,6 +16,7 @@ export default class PageEdit extends Page {
   * @param {App} app Instanz der App-Klasse
   * @param {Integer} editId ID des bearbeiteten Datensatzes
   */
+
   constructor(app, editId) {
     super(app, HtmlTemplate);
 
@@ -30,11 +32,11 @@ export default class PageEdit extends Page {
     };
 
     // Eingabefelder
-    this._rezeptnameInput = null;
-    this._dauerInput  = null;
-    this._schwierigkeitsgradInput     = null;
-    this._zutatenInput     = null;
-    this._zubereitungInput     = null;
+    this._rezeptnameInput           = null;
+    this._dauerInput                = null;
+    this._schwierigkeitsgradInput   = null;
+    this._zutatenInput              = null;
+    this._zubereitungInput          = null;
   }
 
   /**
@@ -52,6 +54,7 @@ export default class PageEdit extends Page {
   * Apps würde man ggf. eine Template Engine wie z.B. Nunjucks integrieren
   * und den JavaScript-Code dadurch deutlich vereinfachen.
   */
+
   async init() {
 
     // HTML-Inhalt nachladen
@@ -92,6 +95,7 @@ export default class PageEdit extends Page {
   * Speichert den aktuell bearbeiteten Datensatz und kehrt dann wieder
   * in die Listenübersicht zurück.
   */
+
   async _saveAndExit() {
 
     // Eingegebene Werte prüfen
