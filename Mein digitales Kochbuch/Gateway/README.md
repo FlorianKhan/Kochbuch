@@ -5,11 +5,11 @@ Inhaltsverzeichnis
 ------------------
 
  1. [Kurzbeschreibung](#kurzbeschreibung)
- 2. [Konfiguration des Gateway-Servers](#konfiguration-das-gateway-servers)
- 3. [Start mit Docker Compose](#start-mit-docker-compose)
- 4. [Produktives Container Image bauen](#produktives-container-image-bauen)
+ 1. [Konfiguration des Gateway-Servers](#konfiguration-das-gateway-servers)
+ 1. [Start mit Docker Compose](#start-mit-docker-compose)
+ 1. [Produktives Container Image bauen](#produktives-container-image-bauen)
 
-1. Kurzbeschreibung
+Kurzbeschreibung
 ----------------
 
 Dies ist der Gateway-Server des Kochbuchs, der alle Einzelservices
@@ -57,7 +57,7 @@ Art Standard im Cloud-Umfeld bewährt. Viele kommerzielle oder freie Gatewy-Serv
 sowie Ingress-Router basieren im Kern auf nginx mit einer schönen Benutzeroberfläche
 drumherum.
 
-2. Konfiguration des Gateway-Servers
+Konfiguration des Gateway-Servers
 ---------------------------------
 
 Kommerzielle Produkte bieten oft eine grafische Benutzeroberfläche, mit der
@@ -74,7 +74,7 @@ auch nicht sehr kompliziert aufgebaut ist. Im Zweifelsfall hilft natürlich
 immer ein Blick in die [Dokumentation von nginx](https://nginx.org/en/docs/)
 wobei hier insbesondere der alphabetische Index aller "Directiven" nützlich ist.
 
-3. Start mit Docker Compose
+Start mit Docker Compose
 ------------------------
 
 Am einfachsten lässt sich die App mit Docker Compose aus dem Wurzelverzeichnis
@@ -88,7 +88,7 @@ Befehle im Detail:
 Der nachfolgende Abschnitt in dieser Datei beschreiben hingegen, was dabei im
 Hintergrund passiert bzw. wie das Gateway isoliert gestartet werden kann.
 
-4. Produktives Container-Image bauen
+Produktives Container-Image bauen
 ---------------------------------
 
 Für den Produktivbetrieb konfiguriert das beigefügte `Dockerfile` einen `nginx`
