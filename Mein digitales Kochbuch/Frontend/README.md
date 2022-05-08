@@ -126,7 +126,7 @@ im Grunde genommen damit auch auf die gleiche Art gestartet.
 Dokumentation eines spezifischen Fehlers
 ---------------------------------
 
-Beim löschen eines Rezeptes / einer Bewertung / eines Rezeptes auf der Favoritenliste / eines Rezeptes auf der Einkaufsliste
+Beim Löschen eines Rezeptes / einer Bewertung / eines Rezeptes auf der Favoritenliste / eines Rezeptes auf der Einkaufsliste
 erscheint ein spezifischer Fehler im Frontend:
 
 Uncaught (in promise) SyntaxError: Unexpected end of JSON input
