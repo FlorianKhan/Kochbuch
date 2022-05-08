@@ -153,7 +153,7 @@ export default class PageList extends Page {
         }
 
         // Zurück zur Übersicht
-        location.hash = "#/favoriten";
+        location.hash = "#/favoriten/";
     }
 
     /**
@@ -182,7 +182,7 @@ export default class PageList extends Page {
         }
 
         // Zurück zur Übersicht
-        location.hash = "#/einkaufsliste";
+        location.hash = "#/einkaufsliste/";
     }
 
 };
