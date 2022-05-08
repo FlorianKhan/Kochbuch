@@ -5,12 +5,12 @@ Inhaltsverzeichnis
 ------------------
 
  1. [Kurzbeschreibung](#kurzbeschreibung)
- 2. [Nutzung der Gitpod Online-IDE](#nutzung-der-gitpod-online-ide)
- 3. [Start mit Docker Compose](#start-mit-docker-compose)
- 4. [Start einzelner Services mit und ohne Docker](#start-einzelner-services-mit-und-ohne-docker)
- 5. [Hinwes zu Podman unter Linux](#hinweis-zu-podman-unter-linux)
+ 1. [Nutzung der Gitpod Online-IDE](#nutzung-der-gitpod-online-ide)
+ 1. [Start mit Docker Compose](#start-mit-docker-compose)
+ 1. [Start einzelner Services mit und ohne Docker](#start-einzelner-services-mit-und-ohne-docker)
+ 1. [Hinwes zu Podman unter Linux](#hinweis-zu-podman-unter-linux)
 
-1. Kurzbeschreibung
+Kurzbeschreibung
 ----------------
 
 Bei dieser Anwendung handelt es sich um ein Kochbuch auf Vorlage des
@@ -44,7 +44,7 @@ dem Browser zugänglich zu machen.
 Mit Docker und Docker Compose können die Bestandteile der App einzeln oder
 als Gesamtprojekt ausgeführt werden.
 
-2. Nutzung der Gitpod Online-IDE
+Nutzung der Gitpod Online-IDE
 ----------------------------
 
 Falls Sie auf Ihrem Rechner gar keine Software installieren können oder die
@@ -85,7 +85,7 @@ export API_URL=https://3000-….gitpod.io
 
 Anschließend sollte alles wie es soll funktionieren.
 
-3. Start mit Docker Compose
+Start mit Docker Compose
 ------------------------
 
 Das Wurzelverzeichnis beinhaltet zwei Docker Compose Files, mit denen die
@@ -168,7 +168,7 @@ App unverändert auch mit Docker Swarm ausführen, dies wird hier allerdings
 absichtlicht nicht beschrieben, da es auf Docker Compose aufbaut und Docker
 Compose davon abgesehen für uns zunächst ausreicht.
 
-4. Start einzelner Services mit und ohne Docker
+Start einzelner Services mit und ohne Docker
 --------------------------------------------
 
 Die README-Dateien in den jeweiligen Unterverzeichnissen beschrieben, wie die
@@ -177,7 +177,7 @@ um diese in Isolation zu testen. In der Regel ist jedoch einfacher, mit Docker
 Compose eine komplette Entwicklungsumgebung zu starten und darauf los zu
 programmieren.
 
-5. Hinweis zu Podman unter Linux
+Hinweis zu Podman unter Linux
 -----------------------------
 
 Unter Linux hat sich inzwischen Podman als verbreitete Alternative zu Docker

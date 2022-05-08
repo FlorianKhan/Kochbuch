@@ -4,15 +4,15 @@ Kochbuch: Backend
 Inhaltsverzeichnis
 ------------------
 
-1. [Kurzbeschreibung](#kurzbeschreibung)
-2. [Start mit Docker Compose](#start-mit-docker-compose)
-3. [Bekannte Probleme unter Windows](#bekannte-probleme-unter-windows)
-4. [Manueller Start der MongoDB](#manueller-start-der-mongodb)
-5. [Node.js-Kommandozeilenbefehle](#nodejs-kommandozeilenbefehle)
-6. [Node.js in Docker ausführen](#nodejs-in-docker-ausführen)
-7. [Produktives Container Image bauen](#produktives-container-image-bauen)
+ 1. [Kurzbeschreibung](#kurzbeschreibung)
+ 1. [Start mit Docker Compose](#start-mit-docker-compose)
+ 1. [Bekannte Probleme unter Windows](#bekannte-probleme-unter-windows)
+ 1. [Manueller Start der MongoDB](#manueller-start-der-mongodb)
+ 1. [Node.js-Kommandozeilenbefehle](#nodejs-kommandozeilenbefehle)
+ 1. [Node.js in Docker ausführen](#nodejs-in-docker-ausführen)
+ 1. [Produktives Container Image bauen](#produktives-container-image-bauen)
 
-1. Kurzbeschreibung
+Kurzbeschreibung
 ----------------
 
 Dies ist der backendseitige REST-Webservice der Kochbuch-App. Es handelt sich
@@ -20,7 +20,7 @@ um ein einfaches nodeJS-Projekt mit dem Webframework [Restify](http://restify.co
 Die Schnittstelle des Webservices ist in der Datei `src/api/openapi.yaml`
 beschrieben.
 
-2. Start mit Docker Compose
+Start mit Docker Compose
 ------------------------
 
 Am einfachsten lässt sich die Kochbuch-App mit Docker Compose aus dem Wurzelverzeichnis
@@ -35,7 +35,7 @@ Die nachfolgenden Abschnitte in dieser Datei beschreiben hingegen, was dabei im
 Hintergrund passiert bzw. wie das Backend mit und ohne Docker isoliert gestartet
 werden kann.
 
-3. Bekannte Probleme unter Windows
+Bekannte Probleme unter Windows
 -------------------------------
 
 Da Docker eine Linux-Technologie ist, verwendet Docker unter Windows inzwischen
@@ -61,7 +61,7 @@ Die neue Version muss wie folgt lauten:
 Dadurch werden die Änderungen an den Quellcode-Dateien auf eine andere Weise
 erkannt, so dass der automatische Neustart wieder funktioniert.
 
-4. Manueller Start der MongoDB
+Manueller Start der MongoDB
 ---------------------------
 
 Wird der Service nicht mit Docker Compose gestartet, muss erst eine lokale MongoDB
@@ -103,7 +103,7 @@ docker system prune
 Unnötig zu erwähnen, dass diese Schritte durch Docker Compose vollständig
 automatisiert werden.
 
-5. Node.js-Kommandozeilenbefehle
+Node.js-Kommandozeilenbefehle
 -----------------------------
 
 Dieser Service nutzt Node.js bzw. den Node Package Manager zur Verwaltung von
@@ -123,7 +123,7 @@ zur Anbindung eines JavaScript-Debuggers verwendet werden.
 ausgeführt. In der `../docker-compose.dev.yml` werden hingegen die Befehle
 `npm install` und `npm start` ausgeführt.
 
-6. Node.js in Docker ausführen
+Node.js in Docker ausführen
 ---------------------------
 
 Siehe [gleichnamigen Abschnitt im Frontend-README](../Frontend#nodejs-in-docker-ausführen).
@@ -131,7 +131,7 @@ Das Vorgehen ist exakt dasselbe, da beide Teile der Anwendung Node.js verwenden.
 Denken Sie lediglich daran, für das Frontend und das Backend jeweils eine eigene
 Node.js-Umgebung in Docker zu starten.
 
-7. Produktives Container-Image bauen
+Produktives Container-Image bauen
 ---------------------------------
 
 Für den Produktivbetrieb konfiguriert das beigefügte `Dockerfile` eine produktive
