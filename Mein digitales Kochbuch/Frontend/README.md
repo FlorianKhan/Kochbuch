@@ -133,5 +133,5 @@ Uncaught (in promise) SyntaxError: Unexpected end of JSON input
     at Backend.fetch (backend.js:89:29)
 
 Diese Fehlermeldung ist uns bewusst, allerdings konnte die Quelle unsererseits nicht identifiziert und somit nicht gelöst werden.
-Da es aber die Funktionalität des Löschens nicht beeinträchtigt, wurden hierfür keine Maßnahmen getroffen.
+Da es aber die Funktionalität des Löschens nicht beeinträchtigt wird, wurden hierfür keine Maßnahmen getroffen.
 Außerdem ist dieser Fehler bereits im Vorlagen-Grundgerüst "Adressbuch" aufzufinden.
